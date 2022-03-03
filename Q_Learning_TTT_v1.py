@@ -216,6 +216,39 @@ class State:
                     self.reset()
                     break
 
+    def play_human(self):
+        while not self.isEnd:
+
+            positions = self.availablePositions()
+            p2_action = self.p2.chooseAction(positions)
+            # take action and upate board state
+            self.updateState(p2_action)
+            self.showBoard()
+            # check board status if it is end
+            win = self.winner()
+            if win is not None:
+                if win == 1:
+                    print(self.p2.name, "wins!")
+                else:
+                    print("tie!")
+                self.reset()
+                break
+
+            else:
+                positions = self.availablePositions()
+                p1_action = self.p1.chooseAction(positions)
+                               
+                self.updateState(p1_action)
+                self.showBoard()
+                win = self.winner()
+
+                if win is not None:
+                    if win == -1:
+                        print(self.p1.name, "wins!")
+                    else:
+                        print("tie!")
+                    self.reset()
+                    break
 
     # Method for creating a board
     def showBoard(self):
@@ -332,11 +365,11 @@ if __name__ == "__main__":
     p2 = Player("p2")
     
     # TO DO: SELECTOR OF AI VS AI , AI VS HUMAN(FIRST/SECOND) , HUMAN VS HUMAN
-    #         UPDATE COMMENTS
-    p1 = Player("computer", exp_rate=0)
-    p1.loadPolicy("policy_p2")
+    #p1 = Player("computer", exp_rate=0)
+    #p1.loadPolicy("policy_p2")
 
+    p1 = HumanPlayer("human")
     p2 = HumanPlayer("human")
 
     st = State(p1, p2)
-    st.play_first()
+    st.play_human()
