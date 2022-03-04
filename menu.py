@@ -1,5 +1,9 @@
+from distutils import command
 from tkinter import *
 from turtle import color
+import sys
+
+from matplotlib import container
 
 
 #define constant
@@ -18,12 +22,15 @@ class MainMenuScreen(Frame):
         self.frame = Frame(container, background="#8df542", width=windowWidth, height=windowHeight).place(x=0, y=0)
         
         #define buttons
-        self.btnTictactoe = Button(self.frame, text="Tic Tac Toe")
-        self.btnExit = Button(self.frame, text="Exit")
+        self.btnTictactoe = Button(self.frame, text="Tic Tac Toe", command=lambda:[self.destroy(), TictactoeScreen(app)])
+        self.btnExit = Button(self.frame, text="Exit", command=self.quitProgram)
         
         #place buttons
         self.btnTictactoe.place(x=initialXY, y=initialXY, width=btnWidth, height=btnHeight)
         self.btnExit.place(x=initialXY, y=initialXY + incrementY, width=btnWidth, height=btnHeight)
+    
+    def quitProgram(self):
+        sys.exit(0)
 
 class TictactoeScreen(Frame):
     def __init__(self, container):
@@ -51,6 +58,7 @@ class App(Tk):
 
 
 if __name__ == "__main__":
+    global app
     app = App()
     frame = MainMenuScreen(app)
     app.mainloop()
