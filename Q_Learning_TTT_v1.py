@@ -14,7 +14,7 @@ class State:
         # init p1 plays first
         self.playerSymbol = 1
 
-    # get unique hash of current board state
+    # Get unique hash of current board state
     def getHash(self):
         self.boardHash = str(self.board.reshape(BOARD_COLS * BOARD_ROWS))
         return self.boardHash
@@ -72,11 +72,13 @@ class State:
 
     def updateState(self, position):
         self.board[position] = self.playerSymbol
-        # switch to another player
+        # Switch to another player
         self.playerSymbol = -1 if self.playerSymbol == 1 else 1
 
     """
     When the game ends distrubutes values depending on win/lose/tie
+
+    !! Only used for initial training , not required after that
     """
     def giveReward(self):
         result = self.winner()
@@ -182,10 +184,12 @@ class State:
     
     # Play vs AI , play second
     def play_second(self):
+
         while not self.isEnd:
 
             positions = self.availablePositions()
             p1_action = self.p1.chooseAction(positions, self.board, self.playerSymbol)
+            
             
             # take action and upate board state
             self.updateState(p1_action)
@@ -215,7 +219,8 @@ class State:
                         print("tie!")
                     self.reset()
                     break
-
+    
+    # Human vs Human
     def play_human(self):
         while not self.isEnd:
 
@@ -252,7 +257,6 @@ class State:
 
     # Method for creating a board
     def showBoard(self):
-        # p1: x  p2: o
         for i in range(0, BOARD_ROWS):
             print('-------------')
             out = '| '
@@ -267,7 +271,41 @@ class State:
             print(out)
         print('-------------')
 
+    # AI vs AI 
+    def play_AivsAi(self):
+        while not self.isEnd:
 
+            positions = self.availablePositions()
+            p2_action = self.p2.chooseAction(positions, self.board, self.playerSymbol)
+            # take action and upate board state
+            self.updateState(p2_action)
+            self.showBoard()
+            # check board status if it is end
+            win = self.winner()
+            if win is not None:
+                if win == 1:
+                    print(self.p2.name, "wins!")
+                else:
+                    print("tie!")
+                self.reset()
+                break
+
+            else:
+                positions = self.availablePositions()
+                p1_action = self.p1.chooseAction(positions, self.board, self.playerSymbol)
+                               
+                self.updateState(p1_action)
+                self.showBoard()
+                win = self.winner()
+
+                if win is not None:
+                    if win == -1:
+                        print(self.p1.name, "wins!")
+                    else:
+                        print("tie!")
+                    self.reset()
+                    break
+#Represents class for AI 
 class Player:
     def __init__(self, name, exp_rate=0.3):
         self.name = name
@@ -309,11 +347,12 @@ class Player:
                     action = p
         return action
 
-    # append a hash state
+    # Append a hash state
     def addState(self, state):
         self.states.append(state)
 
     # At the end of game, backpropagate and update states value
+    # Used only while training , not required for overall usage
     def feedReward(self, reward):
         for st in reversed(self.states):
             if self.states_value.get(st) is None:
@@ -324,52 +363,123 @@ class Player:
     def reset(self):
         self.states = []
 
+    # Saves policy after training, used only while training , not required for overall usage
     def savePolicy(self):
         fw = open('policy_' + str(self.name), 'wb')
         pickle.dump(self.states_value, fw)
         fw.close()
 
+    # Loads policy after training, used only while training , not required for overall usage
     def loadPolicy(self, file):
         fr = open(file, 'rb')
         self.states_value = pickle.load(fr)
         fr.close()
 
 
+#Represents class for Human player
 class HumanPlayer:
     def __init__(self, name):
         self.name = name
 
+    """
+    Method that allows us to input on the board
+
+    Args: positions --> Array that represents available spots on the board
+    Returns: action --> index where our input is on the board
+    """
     def chooseAction(self, positions):
         while True:
-            row = int(input("Input your action row:"))
-            col = int(input("Input your action col:"))
-            action = (row, col)
-            if action in positions:
-                return action
-
-    # append a hash state
-    def addState(self, state):
-        pass
-
-    # At the end of game, backpropagate and update states value
-    def feedReward(self, reward):
-        pass
-
-    def reset(self):
-        pass
+            position = 0
+            position = int(input("Input your desired board position:"))
+            if(position==1):
+                action = (0, 0)
+            elif(position == 2):
+                action = (0, 1)
+            elif(position == 3):
+                action = (0, 2)
+            elif(position == 4):
+                action = (1, 0)
+            elif(position == 5):
+                action = (1, 1)
+            elif(position == 6):
+                action = (1, 2)
+            elif(position == 7):
+                action = (2, 0)
+            elif(position == 8):
+                action = (2, 1)
+            elif(position == 9):
+                action = (2, 2)
+            else:
+                print("Invalid input")
+                
+            try:
+                if action in positions:
+                    return action
+            except UnboundLocalError:
+                position = int(input("Input your desired board position:"))
 
 
 if __name__ == "__main__":
 
-    p1 = Player("p1")
-    p2 = Player("p2")
+    """
+       TO DO: 
+        - Add training example and function
+        - Add general how-to explanation of how everythin works
+        - Fix AI vs AI function 
+        - Chnage input and add menu --> DONE 
+
+
+    """
+    ans=True
+    while ans:
+        print("""
+        1.Play vs AI
+        2.Human vs Human
+        3.AI vs AI
+        4.Exit/Quit
+        """)
+        ans=input("What would you like to do? ")
+        if ans=="1":
+            while ans:
+                print("""
+                1.Play first
+                2.Play second
+                3.Quit
+                """)
+                ans=input("What would you like to do? ")
+                if ans=="1":
+                    p2 = Player("computer", exp_rate=0)
+                    p2.loadPolicy("policy_p2")
+                    p1 = HumanPlayer("human")
+                    st = State(p2, p1)
+                    st.play_first()
+                elif ans =="2":
+                    p1 = Player("computer", exp_rate=0)
+                    p1.loadPolicy("policy_p1")
+                    p2 = HumanPlayer("human")
+                    st = State(p1, p2)
+                    st.play_second()
+                elif ans =="3":
+                    ans = None
+                else:
+                    print("\n Not Valid Choice Try again")
+
+
+        elif ans=="2":
+            p1 = HumanPlayer("human")
+            p2 = HumanPlayer("human")
+            st = State(p1, p2)
+            st.play_human()
+        elif ans=="3":
+            print("Not working atm..") 
+            p1 = Player("computer", exp_rate=0)
+            p2 = Player("computer", exp_rate=0)
+            #TO DO
+        elif ans=="4":
+            print("\n Goodbye") 
+            ans = None
+        else:
+            print("\n Not Valid Choice Try again")
+
     
-    # TO DO: SELECTOR OF AI VS AI , AI VS HUMAN(FIRST/SECOND) , HUMAN VS HUMAN
-    #p1 = Player("computer", exp_rate=0)
-    #p1.loadPolicy("policy_p2")
-
-    p1 = HumanPlayer("human")
-    p2 = HumanPlayer("human")
-
-    st = State(p1, p2)
-    st.play_human()
+    
