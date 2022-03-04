@@ -39,14 +39,21 @@ class TictactoeScreen(Frame):
         self.frame = Frame(container, background="#2856a6", width=windowWidth, height=windowHeight).place(x=0, y=0)
         
         #define buttons
-        self.btnPvP = Button(self.frame, text="Player vs Player")
-        self.btnPvAI = Button(self.frame, text="Play vs BOT")
-        self.btnBack = Button(self.frame, text="Back")
+        self.btnPvP = Button(self.frame, text="Player vs Player", command=lambda: self.startPvPGame)
+        self.btnPvAI = Button(self.frame, text="Play vs BOT", command=lambda: self.startPvAIGame)
+        self.btnBack = Button(self.frame, text="Back", command=lambda:[self.destroy(), MainMenuScreen(app)])
         
         #place buttons
         self.btnPvP.place(x=initialXY, y=initialXY, width=btnWidth, height=btnHeight)
         self.btnPvAI.place(x=initialXY, y=initialXY + incrementY, width=btnWidth, height=btnHeight)
         self.btnBack.place(x=initialXY, y=initialXY + 2*incrementY, width=btnWidth, height=btnHeight)
+
+    #needs to be implemented
+    def startPvPGame():
+        return
+    #needs to be implemented
+    def startPvAIGame():
+        return
 
 class App(Tk):
     def __init__(self):
