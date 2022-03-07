@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">TicTacToe</string>
+    <string name="label_humanVsHuman">Human vs Human</string>
+    <string name="label_humanVsAi">Human vs AI</string>
+    <string name="label_aiVsAi">AI vs AI</string>
+    <string name="label_matchHistory">Match History</string>
 </resources>
