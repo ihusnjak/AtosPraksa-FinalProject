@@ -4,7 +4,6 @@
 #include <memory>
 #include <vector>
 #include <iostream>
-#include <memory>
 
 Game::Game(std::unique_ptr<Player>& player_one, std::unique_ptr<Player>& player_two){
     this->board = std::make_unique<Board>();

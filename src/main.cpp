@@ -4,9 +4,11 @@
 #include "Tic_Tac_Toe/human_player.h"
 #include "Tic_Tac_Toe/random_player.h"
 #include "Tic_Tac_Toe/minmax_player.h"
+#include "Tic_Tac_Toe/q_player.h"
 #include "Tic_Tac_Toe/player.h"
 #include "Tic_Tac_Toe/game.h"
 #include "Tic_Tac_Toe/constants.h"
+#include "Tic_Tac_Toe/Qtable.h"
 #include <vector>
 #include <memory>
 
@@ -27,6 +29,5 @@ int main(){
     }catch(std::exception& e){
         std::cout << e.what() << std::endl;
     }
-
     return 0;
 }
