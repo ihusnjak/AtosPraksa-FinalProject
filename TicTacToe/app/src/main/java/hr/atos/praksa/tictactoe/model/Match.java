@@ -1,8 +1,9 @@
 package hr.atos.praksa.tictactoe.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Match {
+public class Match implements Serializable {
     private String player1, player2, winner;
     private ArrayList<Move> moves;
 

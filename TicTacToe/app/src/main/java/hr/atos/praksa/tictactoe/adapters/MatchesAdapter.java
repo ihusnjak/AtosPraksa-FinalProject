@@ -11,27 +11,34 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import hr.atos.praksa.tictactoe.R;
+import hr.atos.praksa.tictactoe.listeners.OnMatchClickListener;
 import hr.atos.praksa.tictactoe.model.Match;
 
 public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolder> {
     private Context context;
-    private ArrayList<Match> matchesTestList;
+    private ArrayList<Match> matchesList;
+    private OnMatchClickListener listener;
 
-    public MatchesAdapter(Context context, ArrayList<Match> matchesTestList){
+    public MatchesAdapter(Context context, ArrayList<Match> matchesTestList, OnMatchClickListener listener){
         this.context = context;
-        this.matchesTestList = matchesTestList;
+        this.matchesList = matchesTestList;
+        this.listener = listener;
+    }
+
+    public void setOnMatchClickListener(OnMatchClickListener listener){
+        this.listener = listener;
     }
 
     @NonNull
     @Override
     public MatchesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(context).inflate(R.layout.match_history_item, parent, false);
-        return new MatchesViewHolder(v);
+        return new MatchesViewHolder(v, listener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MatchesViewHolder holder, int position) {
-        Match currentMatch = matchesTestList.get(position);
+        Match currentMatch = matchesList.get(position);
 
         holder.tvPlayer1.setText(currentMatch.getPlayer1());
         holder.tvPlayer2.setText(currentMatch.getPlayer2());
@@ -40,6 +47,6 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolder> {
 
     @Override
     public int getItemCount() {
-        return this.matchesTestList.size();
+        return this.matchesList.size();
     }
 }
