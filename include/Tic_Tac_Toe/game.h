@@ -1,18 +1,19 @@
 #pragma once
 #include "Tic_Tac_Toe/board.h"
 #include "Tic_Tac_Toe/constants.h"
-#include "player.h"
+#include "Tic_Tac_Toe/player.h"
 #include <string>
+#include <memory>
 
 class Game{
     private:
         const std::string board_null_error_msg = "FATAL ERROR. The board is null.";
-        Board* board = nullptr;
-        Player* player_one = nullptr;
-        Player* player_two = nullptr;
+        std::shared_ptr<Board> board = nullptr;
+        std::unique_ptr<Player> player_one = nullptr;
+        std::unique_ptr<Player> player_two = nullptr;
 
     public:
-        Game(Player* player_one, Player* player_two);
+        Game(std::unique_ptr<Player>& player_one, std::unique_ptr<Player>& player_two);
 
         void reset_game();
 

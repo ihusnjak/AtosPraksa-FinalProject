@@ -73,3 +73,16 @@ Winner winning_diagonal(std::vector<int>& board){
 
     return winner;
 }
+
+Winner decide_winner(std::vector<int>& board){
+    Winner winner = Winner::Ongoing;
+    std::vector<Winner> possible_wins = {winning_row(board), winning_diagonal(board), winning_column(board), draw(board)};
+
+    for(auto& win : possible_wins){
+        if(win != Winner::Ongoing){
+            return win;
+        }
+    }
+
+    return winner;
+}

@@ -3,7 +3,6 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include <cmath>
 
 void Board::empty_board(){
     std::fill_n(board.begin(), Const::N_FIELDS, Const::EMPTY_VALUE);
@@ -47,7 +46,7 @@ int Board::to_table_value(){
     int board_table_value = 0;
     for(auto& elem: board){
         board_table_value *= 10;
-        board_table_value += elem;
+        board_table_value += elem == Const::O_VALUE? Const::O_TABLE_VALUE : elem;
     }
     return board_table_value;
 }
@@ -59,7 +58,7 @@ std::vector<int> Board::get_board(){
 bool Board::is_valid(int position){
     bool valid_position = position <= Const::N_FIELDS && position > 0;
     if(valid_position){
-        valid_position = board.at(position-1) == 0;
+        valid_position = board.at(position-1) == Const::EMPTY_VALUE;
     }
     return valid_position;
 }

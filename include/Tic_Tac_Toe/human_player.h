@@ -1,9 +1,9 @@
 #pragma once
 
-#include "player.h"
+#include "Tic_Tac_Toe/player.h"
 
 class HumanPlayer: public Player{
     public:
         explicit HumanPlayer();
-        int play() override;
+        int play(std::shared_ptr<Board> board) override;
 };
