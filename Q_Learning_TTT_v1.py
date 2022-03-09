@@ -307,12 +307,8 @@ class State:
                     break
 #Represents class for AI 
 class Player:
-    def __init__(self, name, exp_rate=0.3):
+    def __init__(self, name):
         self.name = name
-        self.states = []  # record all positions taken
-        self.lr = 0.2
-        self.exp_rate = exp_rate
-        self.decay_gamma = 0.9
         self.states_value = {}  # state -> value
 
     def getHash(self, board):
@@ -330,35 +326,17 @@ class Player:
     """
 
     def chooseAction(self, positions, current_board, symbol):
-        if np.random.uniform(0, 1) <= self.exp_rate:
-            # take random action
-            idx = np.random.choice(len(positions))
-            action = positions[idx]
-        else:
-            value_max = -999
-            for p in positions:
-                next_board = current_board.copy()
-                next_board[p] = symbol
-                next_boardHash = self.getHash(next_board)
-                value = 0 if self.states_value.get(next_boardHash) is None else self.states_value.get(next_boardHash)
+        value_max = -999
+        for p in positions:
+            next_board = current_board.copy()
+            next_board[p] = symbol
+            next_boardHash = self.getHash(next_board)
+            value = 0 if self.states_value.get(next_boardHash) is None else self.states_value.get(next_boardHash)
 
-                if value >= value_max:
-                    value_max = value
-                    action = p
+            if value >= value_max:
+                value_max = value
+                action = p
         return action
-
-    # Append a hash state
-    def addState(self, state):
-        self.states.append(state)
-
-    # At the end of game, backpropagate and update states value
-    # Used only while training , not required for overall usage
-    def feedReward(self, reward):
-        for st in reversed(self.states):
-            if self.states_value.get(st) is None:
-                self.states_value[st] = 0
-            self.states_value[st] += self.lr * (self.decay_gamma * reward - self.states_value[st])
-            reward = self.states_value[st]
 
     def reset(self):
         self.states = []
@@ -448,13 +426,13 @@ if __name__ == "__main__":
                 """)
                 ans=input("What would you like to do? ")
                 if ans=="1":
-                    p2 = Player("computer", exp_rate=0)
+                    p2 = Player("computer")
                     p2.loadPolicy("policy_p2")
                     p1 = HumanPlayer("human")
                     st = State(p2, p1)
                     st.play_first()
                 elif ans =="2":
-                    p1 = Player("computer", exp_rate=0)
+                    p1 = Player("computer")
                     p1.loadPolicy("policy_p1")
                     p2 = HumanPlayer("human")
                     st = State(p1, p2)
