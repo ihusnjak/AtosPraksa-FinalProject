@@ -82,6 +82,7 @@ class GameLogic:
         board = np.zeros((BOARD_ROWS, BOARD_COLS))
         isEnd = False
         playerSymbol = 1
+
     
     
     def humanPlayerAction(self,player):
@@ -114,14 +115,11 @@ class GameLogic:
                 PopupMessage(app,player)
             else:
                 PopupMessage(app,"Tie")
-            self.reset()
+            self.reset()    
         
 
     def play(self,order):
         btn = GameScreen(app)
-        global count
-        count = 0
-        self.reset()
         if(order == 0): 
             while not self.isEnd:
                 action = self.humanPlayerAction(1)
@@ -150,7 +148,6 @@ class GameLogic:
                 action = self.humanPlayerAction(2)
                 btn.changeButtonState(action)
                 self.checkwin(self.p2.name)     
-        self.reset()    
 
 
         

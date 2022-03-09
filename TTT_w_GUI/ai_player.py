@@ -10,9 +10,8 @@ class AiPlayer(Player):
     Args: positions --> array of available places on the board
           current_board --> array that represents current board state
           symbol --> char that represents current player
-    Returns: action --> puts x or o on the board
+    Returns: action --> tuple of row and col value that represents baord positon example: (0,0)
     """
-
     def chooseAction(self, positions, current_board, symbol):
         value_max = -999
 

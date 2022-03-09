@@ -17,10 +17,10 @@ class TictactoeScreen(Frame):
         #define buttons
         self.btnPvP = Button(self.frame,
          text="Player vs Player", 
-         command=lambda:[self.destroy(), self.startPvPGame()])
+         command=lambda:[self.destroy(), self.startPvPGame(), reset_state.set(1)])
         self.btnPvAI = Button(self.frame,
          text="Play vs BOT",
-          command=lambda: [self.destroy(), self.startPvAIGame()])
+          command=lambda: [self.destroy(), self.startPvAIGame(), reset_state.set(2)],)
         self.btnBack = Button(self.frame,
          text="Back",
           command=lambda:[self.destroy(), mainmenuscreen.MainMenuScreen(app)])
@@ -37,17 +37,20 @@ class TictactoeScreen(Frame):
     #needs to be implemented
     @staticmethod
     def startPvAIGame():
+        
         p1 = AiPlayer("Computer")
-        p1.loadPolicy("policy_p2")
+        p1.loadPolicy("policy_p1")
         p2 = HumanPlayer("Player")
         st = game_logic.GameLogic(p1, p2)
+        st.reset()
         st.play(2)
-
 
     @staticmethod
     def startPvPGame():
+        
         p1 = human_player.HumanPlayer("Player1")
         p2 = human_player.HumanPlayer("Player2")
         st = game_logic.GameLogic(p1, p2)
+        st.reset()
         st.play(0)
 

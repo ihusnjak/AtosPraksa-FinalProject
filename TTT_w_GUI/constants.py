@@ -32,10 +32,10 @@ def setBtnStyle(btn):
     btn["font"] = ('arial bold', 22)
     
 #logic constants
+reset_state = IntVar()
 count = 0
 playeraction = IntVar()
 BOARD_ROWS = 3
 BOARD_COLS = 3
-result = " "
 board = np.zeros((BOARD_ROWS, BOARD_COLS))
 
