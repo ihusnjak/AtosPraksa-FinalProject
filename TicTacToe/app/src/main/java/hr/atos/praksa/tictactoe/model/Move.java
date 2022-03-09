@@ -1,6 +1,8 @@
 package hr.atos.praksa.tictactoe.model;
 
-public class Move {
+import java.io.Serializable;
+
+public class Move implements Serializable {
     private int moveNo, playedField;
 
     public Move(int moveNo, int playedField){

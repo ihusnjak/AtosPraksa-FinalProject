@@ -38,4 +38,10 @@ public class Match implements Serializable {
     public void setWinner(String winner) {
         this.winner = winner;
     }
+
+    public ArrayList<Move> getMovesList(){ return this.moves; }
+
+    public void addMove(Move move){
+        this.moves.add(move);
+    }
 }
