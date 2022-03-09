@@ -1,36 +1,6 @@
-from msilib.schema import Font
 from tkinter import *
-import tkinter.font as font
-from turtle import color
 import sys
-
-
-#define constant
-windowWidth = 400
-windowHeight = 400
-btnWidth = 300
-btnHeight = 70
-initialXY = 50
-incrementY = btnHeight + initialXY
-gsBtnWidth = 100
-gsBtnHeight = 50
-gsFieldBtnDim = 2
-gsInitialXY = 80
-popupWinWidth = 300
-popupWinHeight = 50
-backgroundColor = "#C1E3FF"
-
-btnBgColor = "#7CC6FE"
-btnFgColor = "#FFFFFF"
-btnActiveColor = "#3B83BA"
-
-
-def setBtnStyle(btn):
-    btn["bg"] = btnBgColor
-    btn["fg"] = btnFgColor
-    btn["activebackground"] = btnActiveColor
-    btn["activeforeground"] = btnFgColor
-    btn["font"] = ('arial bold', 22)
+from Constants import *
 
 class MainMenuScreen(Frame):
     def __init__(self, container):
@@ -69,7 +39,7 @@ class TictactoeScreen(Frame):
          command=lambda:[self.destroy(), GameScreen(app)])
         self.btnPvAI = Button(self.frame,
          text="Play vs BOT",
-          command=lambda: self.startPvAIGame)
+          command=lambda:[self.destroy(), PlayVsCompScreen(app)])
         self.btnBack = Button(self.frame,
          text="Back",
           command=lambda:[self.destroy(), MainMenuScreen(app)])
@@ -82,7 +52,40 @@ class TictactoeScreen(Frame):
         self.btnPvP.place(x=initialXY, y=initialXY, width=btnWidth, height=btnHeight)
         self.btnPvAI.place(x=initialXY, y=initialXY + incrementY, width=btnWidth, height=btnHeight)
         self.btnBack.place(x=initialXY, y=initialXY + 2*incrementY, width=btnWidth, height=btnHeight)
+        
+    """ @staticmethod
+    def startPvPGame():
+        p1 = HumanPlayer("Player1")
+        p2 = HumanPlayer("Player2")
+        st = State(p1, p2)
+        st.play_human()"""
 
+class PlayVsCompScreen(Frame):
+    def __init__(self, container):
+        super().__init__(container)
+        #frame size and color
+        self.frame = Frame(container, background=backgroundColor, width=windowWidth, height=windowHeight).place(x=0, y=0)
+
+        #define buttons
+        self.btnPlay1st = Button(self.frame,
+         text="Start First", 
+         command=lambda: self.startPvAIGame)
+        self.btnPlay2nd = Button(self.frame,
+         text="Start Second",
+          command=lambda: self.startPvAIGame)
+        self.btnBack = Button(self.frame,
+         text="Back",
+          command=lambda:[self.destroy(), TictactoeScreen(app)])
+
+        #style buttons
+        for btn in (self.btnPlay1st, self.btnPlay2nd, self.btnBack):
+            setBtnStyle(btn)
+
+        #place buttons
+        self.btnPlay1st.place(x=initialXY, y=initialXY, width=btnWidth, height=btnHeight)
+        self.btnPlay2nd.place(x=initialXY, y=initialXY + incrementY, width=btnWidth, height=btnHeight)
+        self.btnBack.place(x=initialXY, y=initialXY + 2*incrementY, width=btnWidth, height=btnHeight)
+        
     #needs to be implemented
     def startPvAIGame():
         return
@@ -92,8 +95,9 @@ class GameScreen(Frame):
         super().__init__(container)
         #frame size and color
         self.frame = Frame(container, background=backgroundColor, width=windowWidth, height=windowHeight).place(x=0, y=0)
+        self.buttons()
         
-        #define board buttons
+    def buttons(self):
         self.btnB1 = Button(self.frame, text=" ", font=("arial bold", 20), height=gsFieldBtnDim, width=gsFieldBtnDim*2, command=lambda: self.btnClick)
         self.btnB2 = Button(self.frame, text=" ", font=("arial bold", 20), height=gsFieldBtnDim, width=gsFieldBtnDim*2, command=lambda: self.btnClick)
         self.btnB3 = Button(self.frame, text=" ", font=("arial bold", 20), height=gsFieldBtnDim, width=gsFieldBtnDim*2, command=lambda: self.btnClick)
@@ -107,7 +111,8 @@ class GameScreen(Frame):
         #other buttons
         self.btnReset = Button(self.frame,
          text="Restart",
-          command=lambda: self.resetGame)
+          #command=lambda: self.resetGame)
+          command=lambda: PopupMessage(app))
         self.btnBack = Button(self.frame,
          text="Back",
           command=lambda:[self.destroy(), TictactoeScreen(app)])
@@ -130,13 +135,6 @@ class GameScreen(Frame):
         #place buttons
         self.btnReset.place(x=gsInitialXY, y=4*gsInitialXY, width=gsBtnWidth, height=gsBtnHeight)
         self.btnBack.place(x=gsInitialXY + 132, y=4*gsInitialXY, width=gsBtnWidth, height=gsBtnHeight)
-    
-    #needs to be implemented
-    def resetGame():
-        return
-    #needs to be implemented
-    def btnClick():
-        return
         
 #popup window triggered when game ended
 class PopupMessage:
@@ -145,20 +143,40 @@ class PopupMessage:
         #global top
         top = Toplevel(master, background=backgroundColor, width=popupWinWidth, height=popupWinHeight)
         
-        resultMessage = gameEndMessage()
-        message = Label(top, text=resultMessage, font=("arial bold", 20))
+        """
+        global result
+
+        if result == "Tie":
+            pass
+        else:
+            result = "Winner is: {}!".format(result)
+            
+        message = Label(top, text=result, font=("arial bold", 20), bg=backgroundColor)
+        message.pack(padx=25, pady=25)
+        result = " "
+        """
+        
+        resultMessage = "Game Ended!"
+        #resultMessage = gameEndMessage()
+        message = Label(top, text=resultMessage, font=("arial bold", 20), bg=backgroundColor)
         message.pack(padx=25, pady=25)
         
 #needs to be implemented
 def gameEndMessage():
     return
 
+
 class App(Tk):
     def __init__(self):
         super().__init__()
         # configure the root window
+        screenWidth = self.winfo_screenwidth()
+        screenHeight = self.winfo_screenheight()
+        xPosition = (screenWidth / 2) - (windowWidth / 2)
+        yPosition = (screenHeight / 2) - (windowHeight / 2)
         self.title('AI GAMES')
-        self.geometry(str(windowWidth) + "x" + str(windowHeight))
+        #self.geometry(str(windowWidth) + "x" + str(windowHeight))
+        self.geometry('%dx%d+%d+%d' % (windowWidth, windowHeight, xPosition, yPosition))
         self.resizable(False, False)
         
 if __name__ == "__main__":
