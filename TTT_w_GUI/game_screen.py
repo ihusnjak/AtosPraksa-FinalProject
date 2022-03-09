@@ -27,10 +27,10 @@ class GameScreen(Frame):
         #other buttons
         self.btnReset = Button(self.frame,
         text="Restart",
-        command=lambda:[self.destroy(),self.resetGame()],)
+        command=lambda:[self.destroy(),self.resetGame()])
         self.btnBack = Button(self.frame,
         text="Back",
-        command=lambda:[self.destroy(),self.resetGame(),tictactoescreen.TictactoeScreen(app)],)
+        command=lambda:[self.destroy(),reset_state.set(0), self.resetGame(), tictactoescreen.TictactoeScreen(app)])
         
         #style buttons
         for btn in (self.btnReset, self.btnBack):
@@ -126,22 +126,13 @@ class GameScreen(Frame):
             print("Invalid input") 
     #needs to be implemented
     def resetGame(self):
-        global count
-        count = 0
-
         for btn in (self.btnB1,self.btnB2,self.btnB3,self.btnB4,self.btnB5,self.btnB6,self.btnB7,self.btnB8,self.btnB9):
             btn["text"]=" "
             btn["state"] = "normal"
         game_logic.GameLogic.reset()
-
-        if(reset_state.get() == 1):
-            p1 = AiPlayer("Computer")
-            p1.loadPolicy("policy_p1")
-            p2 = HumanPlayer("Player")
-            st = game_logic.GameLogic(p1, p2)
-            st.reset()
-            st.play(2)
-        elif(reset_state.get() == 2):
+        global count
+        count = 0
+        if(reset_state.get() == 1): 
             tictactoescreen.TictactoeScreen.startPvPGame()
 
 

@@ -10,7 +10,7 @@ class GameLogic:
         self.p2 = p2
         self.isEnd = False
         # init p1 plays first
-        self.playerSymbol = 1
+        self.playerSymbol = -1
 
     #Checks winning conditions
     def winner(self):
@@ -68,23 +68,19 @@ class GameLogic:
     def updateState(self, position):
         board[position] = self.playerSymbol
         # Switch to another player
-
         self.playerSymbol *= -1
 
     # Resets the board
     @staticmethod
     def reset():
         global board
-        global playerSymbol
         global isEnd
-
 
         board = np.zeros((BOARD_ROWS, BOARD_COLS))
         isEnd = False
-        playerSymbol = 1
 
-    
-    
+
+
     def humanPlayerAction(self,player):
         if(player == 1):
             p1_action = self.p1.chooseAction()
@@ -115,7 +111,7 @@ class GameLogic:
                 PopupMessage(app,player)
             else:
                 PopupMessage(app,"Tie")
-            self.reset()    
+            self.reset()   
         
 
     def play(self,order):
