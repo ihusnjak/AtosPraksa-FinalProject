@@ -3,14 +3,13 @@ import numpy as np
 from popups import PopupMessage
 from game_screen import GameScreen
 
-
 class GameLogic:
     def __init__(self, p1, p2):
         self.p1 = p1
         self.p2 = p2
         self.isEnd = False
         # init p1 plays first
-        self.playerSymbol = -1
+        self.playerSymbol = 1
 
     #Checks winning conditions
     def winner(self):
@@ -56,6 +55,7 @@ class GameLogic:
     Args: None
     Returns: Positions array which contains the positions that are marked by either x or o
     """
+
     def availablePositions(self):
         positions = []
         for i in range(BOARD_ROWS):
@@ -74,10 +74,13 @@ class GameLogic:
     @staticmethod
     def reset():
         global board
+        global playerSymbol
         global isEnd
 
         board = np.zeros((BOARD_ROWS, BOARD_COLS))
         isEnd = False
+        playerSymbol = 1
+        
 
 
 
@@ -145,8 +148,4 @@ class GameLogic:
                 btn.changeButtonState(action)
                 self.checkwin(self.p2.name)     
 
-
-        
-
-        
 

@@ -32,7 +32,7 @@ class GameScreen(Frame):
         text="Back",
         command=lambda:[self.destroy(),reset_state.set(0), self.resetGame(), tictactoescreen.TictactoeScreen(app)])
         
-        #style buttons
+        #style buttonss
         for btn in (self.btnReset, self.btnBack):
             setBtnStyle(btn)
             
@@ -134,6 +134,7 @@ class GameScreen(Frame):
         count = 0
         if(reset_state.get() == 1): 
             tictactoescreen.TictactoeScreen.startPvPGame()
-
+        elif(reset_state.get() == 2):
+            tictactoescreen.TictactoeScreen.startPvAIGame()
 
 
