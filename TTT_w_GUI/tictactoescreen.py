@@ -7,7 +7,13 @@ import game_logic
 import sys
 
 
+"""
+Screen that appears after clicking Tic Tac Toe on the main menu, buttons activate functions that start various gamemodes and turn on the game screen.
 
+Everybutton has a destroy function, reset_state variable that remembers the gamemode we want to reset and a function for starting the game.
+NOTE: Probably will change after adding more play options
+
+"""
 class TictactoeScreen(Frame):
     def __init__(self, container):
         super().__init__(container)
@@ -34,14 +40,23 @@ class TictactoeScreen(Frame):
         self.btnPvAI.place(x=initialXY, y=initialXY + incrementY, width=btnWidth, height=btnHeight)
         self.btnBack.place(x=initialXY, y=initialXY + 2*incrementY, width=btnWidth, height=btnHeight)
 
-    #needs to be implemented
+
+
+    """
+    Both methods follow the same principle , we need to define p1 and p2 with their respective classes.
+    If one or two players are Ai be sure to load correct policy, policy_p1 is used when ai plays first and vice versa
+
+    st.play(number) is a function that starts a play function defined in game_logic.py file
+    number --> represents the order of play, 0 is used for Player vs Player gamemode, 1 is when we are playing first vs AI and 2 when second
+    
+    """
     @staticmethod
     def startPvAIGame():     
-        p1 = HumanPlayer("Player")
-        p2 = AiPlayer("Computer")
-        p2.loadPolicy("policy_p2")
+        p2 = HumanPlayer("Player")
+        p1 = AiPlayer("Computer")
+        p1.loadPolicy("policy_p1")
         st = game_logic.GameLogic(p1, p2)
-        st.play(1)
+        st.play(2)
 
     @staticmethod
     def startPvPGame():

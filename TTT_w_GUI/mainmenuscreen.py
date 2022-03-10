@@ -10,7 +10,7 @@ class MainMenuScreen(Frame):
         #define buttons
         self.btnTictactoe = Button(self.frame,
          text="Tic Tac Toe", 
-         command=lambda:[self.destroy(), reset_state.set(1),tictactoescreen.TictactoeScreen(app)])
+         command=lambda:[self.destroy(), reset_state.set(0),tictactoescreen.TictactoeScreen(app)])
         self.btnExit = Button(self.frame,
          text="Exit",
          command=lambda:[self.quitProgram()])

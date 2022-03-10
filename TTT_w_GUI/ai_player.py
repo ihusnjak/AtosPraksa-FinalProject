@@ -1,6 +1,5 @@
 from constants import *
 from player import Player
-import pickle
 
 class AiPlayer(Player):
 

@@ -4,7 +4,10 @@ import game_logic
 from ai_player import AiPlayer
 from human_player import HumanPlayer
 
+"""
+Class used for displaying Tic Tac Toe board
 
+"""
 class GameScreen(Frame):
     def __init__(self, container):
         super().__init__(container)
@@ -54,6 +57,7 @@ class GameScreen(Frame):
     """
     Function user for changing text on the buttons and assigning x or o value_max
 
+    Receives action tuple and based on the coordinates in it and count number puts either X or O
     Params: action tuple (x,y) that tell us desired boadd position 
 
     """
@@ -124,7 +128,16 @@ class GameScreen(Frame):
             self.btnB9.configure(state ="disabled")
         else:
             print("Invalid input") 
-    #needs to be implemented
+    
+    """
+    resetGame function VISUALLY resets the board and starts new game depending on reset_state variable
+
+    game_logic.GameLogic.reset() is used to reset the logic 
+
+    reset_state is a global variable used to remeber our selected game mode so that in a case where we want to reset the game we don't have to go back to
+    gamemode selection screen
+
+    """
     def resetGame(self):
         for btn in (self.btnB1,self.btnB2,self.btnB3,self.btnB4,self.btnB5,self.btnB6,self.btnB7,self.btnB8,self.btnB9):
             btn["text"]=" "

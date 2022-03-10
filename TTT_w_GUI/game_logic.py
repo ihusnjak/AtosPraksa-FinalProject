@@ -53,7 +53,7 @@ class GameLogic:
     Method that keeps track of free and taken spots on the board
 
     Args: None
-    Returns: Positions array which contains the positions that are marked by either x or o
+    Returns: Positions array which contains the positions that are not marked by either x or o
     """
 
     def availablePositions(self):
@@ -65,6 +65,12 @@ class GameLogic:
         return positions
 
 
+    """
+    Marks the symbol on the board array
+
+    Args: position -> Tuple of 2 numbers representing row and col values 
+
+    """
     def updateState(self, position):
         board[position] = self.playerSymbol
         # Switch to another player
@@ -83,9 +89,15 @@ class GameLogic:
         
 
 
+    """
+    humanPlayerAction is a method used for human input on the boad, after receiving play_order variable which represents either 1 or 2 depending on starting position
+    it will declare p1 or p2 as a human player and ask for an input
 
-    def humanPlayerAction(self,player):
-        if(player == 1):
+    Args: play_order --> Number that represents either playing first or second( 1 or 2 )
+    Returns : p_action --> tuple that represents chosen board position
+    """
+    def humanPlayerAction(self,play_order):
+        if(play_order == 1):
             p1_action = self.p1.chooseAction()
             self.updateState(p1_action)
             return p1_action
@@ -94,9 +106,16 @@ class GameLogic:
             self.updateState(p2_action)
             return p2_action
 
-    def aiPlayerAction(self,player):
+
+    """
+    Works same as a humanPlayerAction but Ai chooseAction requires more parametars like positons(array of spots taken on the board), board array and a playersmybol
+
+    Args: play_order --> Number that represents either playing first or second( 1 or 2 )
+    Returns : p_action --> tuple that represents chosen board position
+    """
+    def aiPlayerAction(self,play_order):
         positions = self.availablePositions()
-        if(player == 1):
+        if(play_order == 1):
             p1_action = self.p1.chooseAction(positions, board, self.playerSymbol)
             self.updateState(p1_action)
             return p1_action
@@ -105,6 +124,13 @@ class GameLogic:
             self.updateState(p2_action)
             return p2_action
 
+    """
+    Method user for checking the board for a winner after every move and calling popup class for displaying it.
+    Cheking for winner is done by winner() method defined above which returns 1/-1/None depending on the outcome
+
+    Args: player --> Player names 
+    Returns : 
+    """
     def checkwin(self,player):
         win = self.winner()
         if win is not None:
@@ -117,9 +143,19 @@ class GameLogic:
             self.reset()   
         
 
-    def play(self,order):
+    """
+    Used for separating/chosing gamemodes and assigning play orders
+
+    GAMEMODES: 
+            0- Player VS Player
+            1- Player VS AI
+            2- AI VS Player
+    Args: gamemode --> int that represents our wanted gamemode
+        
+    """
+    def play(self,gamemode):
         btn = GameScreen(app)
-        if(order == 0): 
+        if(gamemode == 0): 
             while not self.isEnd:
                 action = self.humanPlayerAction(1)
                 btn.changeButtonState(action)
@@ -128,7 +164,7 @@ class GameLogic:
                 action = self.humanPlayerAction(2)
                 btn.changeButtonState(action)
                 self.checkwin(self.p2.name)
-        elif(order == 1):
+        elif(gamemode == 1):
             while not self.isEnd:
                 action = self.humanPlayerAction(1)
                 btn.changeButtonState(action)
@@ -138,7 +174,7 @@ class GameLogic:
                 btn.changeButtonState(action)
                 self.checkwin(self.p2.name)
 
-        elif(order == 2):
+        elif(gamemode == 2):
             while not self.isEnd:
                 action = self.aiPlayerAction(1)
                 btn.changeButtonState(action)

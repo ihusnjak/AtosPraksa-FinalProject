@@ -1,5 +1,11 @@
 from constants import *
 
+
+"""
+Class PopupMessage is currently only used to display winner name after game is finished
+
+Args: You need to pass app which is a tkinter object and your message --> Currently hardcoded to only show winner message
+"""
 class PopupMessage():
     def __init__(self, master,message):
         super().__init__()

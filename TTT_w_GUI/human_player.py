@@ -6,6 +6,8 @@ class HumanPlayer(Player):
     """
     Method that allows us to input on the board
 
+    playeraction variable represents gui board where each button is one number starting from 1 
+    app.wait_variable() is used to stop the program until button is pressed
     Args: 
     Returns: action --> tuple of row and col value that represents baord positon example: (0,0)
     """
@@ -32,7 +34,5 @@ class HumanPlayer(Player):
             action = (2, 1)
         elif(playeraction.get() == 9):
             action = (2, 2)
-        else:
-            print("Invalid input")
-        
+      
         return action
