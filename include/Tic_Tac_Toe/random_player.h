@@ -10,7 +10,7 @@ class RandomPlayer: public Player{
         std::unique_ptr<std::mt19937> generator = nullptr;
         std::unique_ptr<std::uniform_int_distribution<int>> distribution = nullptr;
     public:
-        explicit RandomPlayer();
+        explicit RandomPlayer(Player::PlayerSymbol symbol);
 
         int play(std::shared_ptr<Board> board) override;
 };

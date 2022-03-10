@@ -9,6 +9,6 @@ class QPlayer: public Player{
     private:
         std::shared_ptr<QTable> table;
     public:
-        QPlayer();
+        QPlayer(Player::PlayerSymbol symbol);
         int play(std::shared_ptr<Board> board) override;
 };

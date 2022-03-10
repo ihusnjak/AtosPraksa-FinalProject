@@ -1,14 +1,14 @@
 #pragma once
 
-#include "Tic_Tac_Toe/constants.h"
+#include "Tic_Tac_Toe/game.h"
 #include <vector>
 
-Winner winning_row(std::vector<int>& board);
+Game::GameState winning_row(std::vector<int>& board);
 
-Winner winning_column(std::vector<int>& board);
+Game::GameState winning_column(std::vector<int>& board);
 
-Winner winning_diagonal(std::vector<int>& board);
+Game::GameState winning_diagonal(std::vector<int>& board);
 
-Winner draw(std::vector<int>& board);
+Game::GameState draw(std::vector<int>& board);
 
-Winner decide_winner(std::vector<int>& board);
+Game::GameState decide_game_state(std::vector<int>& board);

@@ -5,6 +5,6 @@ int QPlayer::play(std::shared_ptr<Board> board){
     return 0;
 }
 
-QPlayer::QPlayer():Player() {
+QPlayer::QPlayer(Player::PlayerSymbol symbol):Player(symbol) {
     table = std::make_shared<QTable>();
 }

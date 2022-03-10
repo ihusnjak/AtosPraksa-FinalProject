@@ -11,7 +11,7 @@ int RandomPlayer::play(std::shared_ptr<Board> board) {
     return position;
 }
 
-RandomPlayer::RandomPlayer():Player() {
+RandomPlayer::RandomPlayer(Player::PlayerSymbol symbol):Player(symbol) {
     distribution = std::make_unique<std::uniform_int_distribution<int>>(Const::MIN_POSITION,Const::N_FIELDS);
     rd = std::make_unique<std::random_device>();
     generator = std::make_unique<std::mt19937>(rd->operator()());

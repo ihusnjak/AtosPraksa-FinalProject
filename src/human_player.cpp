@@ -20,5 +20,5 @@ int HumanPlayer::play(std::shared_ptr<Board> board) {
     return input;
 }
 
-HumanPlayer::HumanPlayer() : Player() {}
+HumanPlayer::HumanPlayer(Player::PlayerSymbol symbol) : Player(symbol) {}
 

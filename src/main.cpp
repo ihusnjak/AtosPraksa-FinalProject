@@ -13,16 +13,17 @@
 #include <memory>
 
 int main(){
-    std::unique_ptr<Player> pl1(new RandomPlayer());
-    std::unique_ptr<Player> pl2(new MinMaxPlayer(Winner::SecondPlayer));
-    std::unique_ptr<Game> game(new Game(pl1, pl2));
-
     try {
-        Winner winner = game->play();
-        if(winner == Winner::FirstPlayer) {
-            std::cout << "The winner is: X" << std::endl;
-        }else if(winner == Winner::SecondPlayer){
-            std::cout << "The winner is: O" << std::endl;
+        std::unique_ptr<Player> player_one(new RandomPlayer(Player::PlayerSymbol::X));
+        std::unique_ptr<Player> player_two(new MinMaxPlayer(Player::PlayerSymbol::O));
+        std::unique_ptr<Game> game(new Game(player_one, player_two));
+
+        Game::GameState state = game->play();
+
+        if(state == Game::GameState::XWon) {
+            std::cout << "The state is: X" << std::endl;
+        }else if(state == Game::GameState::OWon){
+            std::cout << "The state is: O" << std::endl;
         }else{
             std::cout << "It is draw." << std::endl;
         }

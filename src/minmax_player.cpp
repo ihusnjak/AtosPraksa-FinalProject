@@ -1,14 +1,15 @@
 #include "Tic_Tac_Toe/minmax_player.h"
 #include "Tic_Tac_Toe/helper_functions.h"
 #include "Tic_Tac_Toe/constants.h"
+#include "Tic_Tac_Toe/game.h"
 #include <cmath>
 #include <algorithm>
 
 int MinMaxPlayer::evaluate(std::vector<int>& board) {
-    Winner winner = decide_winner(board);
+    Game::GameState winner = decide_game_state(board);
     int eval = 0;
 
-    if(winner == this->first_second){
+    if(winner == this->symbol){
         eval = Const::MIN_MAX_REWARD;
     }else{
         eval = -Const::MIN_MAX_REWARD;
@@ -42,7 +43,7 @@ int MinMaxPlayer::minmax(std::vector<int>& board, int depth, bool is_max) {
     if(abs(score) == Const::MIN_MAX_REWARD){
         terminate = true;
     }else{
-        if(decide_winner(board) == Winner::Draw){
+        if(decide_game_state(board) == Game::GameState::Draw){
             terminate = true;
         }
     }
@@ -68,7 +69,7 @@ int MinMaxPlayer::play(std::shared_ptr<Board> board) {
 
     for(int i = 0; i < board_v.size(); i++){
         if(board_v.at(i) == Const::EMPTY_VALUE){
-            board_v.at(i) = this->first_second == Winner::FirstPlayer? Const::X_VALUE : Const::O_VALUE;
+            board_v.at(i) = this->symbol == Player::PlayerSymbol::X ? Const::X_VALUE : Const::O_VALUE;
 
             value = minmax(board_v, 0, false);
 
@@ -84,6 +85,4 @@ int MinMaxPlayer::play(std::shared_ptr<Board> board) {
     return move;
 }
 
-MinMaxPlayer::MinMaxPlayer(Winner first_second):Player(){
-    this->first_second = first_second;
-}
+MinMaxPlayer::MinMaxPlayer(Player::PlayerSymbol symbol): Player(symbol){}

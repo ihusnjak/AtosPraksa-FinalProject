@@ -46,7 +46,7 @@ int Board::to_table_value(){
     int board_table_value = 0;
     for(auto& elem: board){
         board_table_value *= 10;
-        board_table_value += elem == Const::O_VALUE? Const::O_TABLE_VALUE : elem;
+        board_table_value += (elem == Const::O_VALUE? Const::O_TABLE_VALUE : elem);
     }
     return board_table_value;
 }

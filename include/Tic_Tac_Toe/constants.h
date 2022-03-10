@@ -1,9 +1,5 @@
 #pragma once
 
-enum class Winner{
-    Draw, Ongoing, FirstPlayer, SecondPlayer
-};
-
 namespace Const{
     const int N_ROW_COLUMN = 3;
     const int N_FIELDS = N_ROW_COLUMN * N_ROW_COLUMN;
