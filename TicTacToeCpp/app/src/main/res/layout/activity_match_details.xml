@@ -4,254 +4,251 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#121212"
     tools:context=".MatchDetailsActivity">
 
 
+    <TextView
+        android:id="@+id/tv_matchHistory_move"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Move: 1"
+        android:textAllCaps="true"
+        android:textColor="@color/label"
+        android:textSize="@dimen/match_history_label_text_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/guide_top_edge"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_top_edge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1"/>
+        app:layout_constraintGuide_percent="0.1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_bot_edge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.6"/>
-
-
+        app:layout_constraintGuide_percent="0.6" />
 
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_game_field"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_small"
+        android:layout_marginRight="@dimen/margin_small"
+        android:background="@color/background_board"
+        app:layout_constraintBottom_toBottomOf="@id/guide_bot_edge"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guide_top_edge"
-        app:layout_constraintBottom_toBottomOf="@id/guide_bot_edge">
+        app:layout_constraintTop_toTopOf="@id/guide_top_edge">
 
-        <View
-            android:layout_width="5dp"
-            android:layout_height="350dp"
-            android:background="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="@id/guide_left_center"
-            app:layout_constraintBottom_toBottomOf="@id/tv_field7"/>
-
-        <View
-            android:layout_width="5dp"
-            android:layout_height="350dp"
-            android:background="@color/black"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="@id/guide_right_center"
-            app:layout_constraintBottom_toBottomOf="@id/tv_field7"/>
-
-        <View
-            android:layout_width="350dp"
-            android:layout_height="5dp"
-            android:background="@color/black"
-            app:layout_constraintLeft_toLeftOf="@id/guide_left_edge"
-            app:layout_constraintRight_toRightOf="@id/guide_right_edge"
-            app:layout_constraintTop_toBottomOf="@id/tv_field1"
-            app:layout_constraintBottom_toTopOf="@id/tv_field4"/>
-
-        <View
-            android:layout_width="350dp"
-            android:layout_height="5dp"
-            android:background="@color/black"
-            app:layout_constraintLeft_toLeftOf="@id/guide_left_edge"
-            app:layout_constraintRight_toRightOf="@id/guide_right_edge"
-            app:layout_constraintTop_toBottomOf="@id/tv_field4"
-            app:layout_constraintBottom_toTopOf="@id/tv_field7"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_left_edge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.05"/>
+            app:layout_constraintGuide_percent="0.05" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_right_edge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.95"/>
+            app:layout_constraintGuide_percent="0.95" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_left_center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.35"/>
+            app:layout_constraintGuide_percent="0.35" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_right_center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.65"/>
+            app:layout_constraintGuide_percent="0.65" />
 
-        <TextView
-            android:id="@+id/tv_field1"
+        <Button
+            android:id="@+id/b_matchHistory_field1"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/match_history_field_height"
-            app:layout_constraintDimensionRatio="1:1"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_board_field"
+            android:foregroundTint="@color/foreground_board_field"
+            android:includeFontPadding="false"
+            android:text="X"
+            android:textColor="@color/foreground_board_field"
+            android:textSize="@dimen/match_history_field_text_size"
             app:layout_constraintLeft_toLeftOf="@id/guide_left_edge"
             app:layout_constraintRight_toRightOf="@id/guide_left_center"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="X"
-            android:textSize="@dimen/match_history_field_text_size"
-            android:textAlignment="center"
-            android:gravity="center_horizontal"/>
-        <TextView
-            android:id="@+id/tv_field2"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_matchHistory_field2"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/match_history_field_height"
-            app:layout_constraintDimensionRatio="1:1"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_board_field"
+            android:foregroundTint="@color/foreground_board_field"
+            android:includeFontPadding="false"
+            android:text="X"
+            android:textColor="@color/foreground_board_field"
+            android:textSize="@dimen/match_history_field_text_size"
             app:layout_constraintLeft_toLeftOf="@+id/guide_left_center"
             app:layout_constraintRight_toRightOf="@id/guide_right_center"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="X"
-            android:textSize="@dimen/match_history_field_text_size"
-            android:textAlignment="center"
-            android:gravity="center_horizontal"/>
-        <TextView
-            android:id="@+id/tv_field3"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_matchHistory_field3"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/match_history_field_height"
-            app:layout_constraintDimensionRatio="1:1"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_board_field"
+            android:foregroundTint="@color/foreground_board_field"
+            android:includeFontPadding="false"
+            android:text="X"
+            android:textColor="@color/foreground_board_field"
+            android:textSize="@dimen/match_history_field_text_size"
             app:layout_constraintLeft_toLeftOf="@+id/guide_right_center"
             app:layout_constraintRight_toRightOf="@id/guide_right_edge"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="X"
-            android:textSize="@dimen/match_history_field_text_size"
-            android:textAlignment="center"
-            android:gravity="center_horizontal"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tv_field4"
+        <Button
+            android:id="@+id/b_matchHistory_field4"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/match_history_field_height"
-            app:layout_constraintDimensionRatio="1:1"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_board_field"
+            android:foregroundTint="@color/foreground_board_field"
+            android:includeFontPadding="false"
+            android:text="X"
+            android:textColor="@color/foreground_board_field"
+            android:textSize="@dimen/match_history_field_text_size"
             app:layout_constraintLeft_toLeftOf="@id/guide_left_edge"
             app:layout_constraintRight_toRightOf="@id/guide_left_center"
-            app:layout_constraintTop_toBottomOf="@id/tv_field1"
-            android:text="X"
-            android:textSize="@dimen/match_history_field_text_size"
-            android:textAlignment="center"
-            android:gravity="center_horizontal"/>
-        <TextView
-            android:id="@+id/tv_field5"
+            app:layout_constraintTop_toBottomOf="@id/b_matchHistory_field1" />
+
+        <Button
+            android:id="@+id/b_matchHistory_field5"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/match_history_field_height"
-            app:layout_constraintDimensionRatio="1:1"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_board_field"
+            android:foregroundTint="@color/foreground_board_field"
+            android:includeFontPadding="false"
+            android:text="X"
+            android:textColor="@color/foreground_board_field"
+            android:textSize="@dimen/match_history_field_text_size"
             app:layout_constraintLeft_toLeftOf="@+id/guide_left_center"
             app:layout_constraintRight_toRightOf="@id/guide_right_center"
-            app:layout_constraintTop_toBottomOf="@id/tv_field2"
-            android:text="X"
-            android:textSize="@dimen/match_history_field_text_size"
-            android:textAlignment="center"
-            android:gravity="center_horizontal"/>
-        <TextView
-            android:id="@+id/tv_field6"
+            app:layout_constraintTop_toBottomOf="@id/b_matchHistory_field2" />
+
+        <Button
+            android:id="@+id/b_matchHistory_field6"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/match_history_field_height"
-            app:layout_constraintDimensionRatio="1:1"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_board_field"
+            android:foregroundTint="@color/foreground_board_field"
+            android:includeFontPadding="false"
+            android:text="X"
+            android:textColor="@color/foreground_board_field"
+            android:textSize="@dimen/match_history_field_text_size"
             app:layout_constraintLeft_toLeftOf="@+id/guide_right_center"
             app:layout_constraintRight_toRightOf="@id/guide_right_edge"
-            app:layout_constraintTop_toBottomOf="@id/tv_field3"
-            android:text="X"
-            android:textSize="@dimen/match_history_field_text_size"
-            android:textAlignment="center"
-            android:gravity="center_horizontal"/>
+            app:layout_constraintTop_toBottomOf="@id/b_matchHistory_field3" />
 
-        <TextView
-            android:id="@+id/tv_field7"
+        <Button
+            android:id="@+id/b_matchHistory_field7"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/match_history_field_height"
-            app:layout_constraintDimensionRatio="1:1"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_board_field"
+            android:foregroundTint="@color/foreground_board_field"
+            android:includeFontPadding="false"
+            android:text="X"
+            android:textColor="@color/foreground_board_field"
+            android:textSize="@dimen/match_history_field_text_size"
             app:layout_constraintLeft_toLeftOf="@id/guide_left_edge"
             app:layout_constraintRight_toRightOf="@id/guide_left_center"
-            app:layout_constraintTop_toBottomOf="@id/tv_field4"
-            android:text="X"
-            android:textSize="@dimen/match_history_field_text_size"
-            android:textAlignment="center"
-            android:gravity="center_horizontal"/>
-        <TextView
-            android:id="@+id/tv_field8"
+            app:layout_constraintTop_toBottomOf="@id/b_matchHistory_field4" />
+
+        <Button
+            android:id="@+id/b_matchHistory_field8"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/match_history_field_height"
-            app:layout_constraintDimensionRatio="1:1"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_board_field"
+            android:foregroundTint="@color/foreground_board_field"
+            android:includeFontPadding="false"
+            android:text="X"
+            android:textColor="@color/foreground_board_field"
+            android:textSize="@dimen/match_history_field_text_size"
             app:layout_constraintLeft_toLeftOf="@+id/guide_left_center"
             app:layout_constraintRight_toRightOf="@id/guide_right_center"
-            app:layout_constraintTop_toBottomOf="@id/tv_field5"
-            android:text="X"
-            android:textSize="@dimen/match_history_field_text_size"
-            android:textAlignment="center"
-            android:gravity="center_horizontal"/>
-        <TextView
-            android:id="@+id/tv_field9"
+            app:layout_constraintTop_toBottomOf="@id/b_matchHistory_field5" />
+
+        <Button
+            android:id="@+id/b_matchHistory_field9"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/match_history_field_height"
-            app:layout_constraintDimensionRatio="1:1"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_board_field"
+            android:foregroundTint="@color/foreground_board_field"
+            android:includeFontPadding="false"
+            android:text="X"
+            android:textColor="@color/foreground_board_field"
+            android:textSize="@dimen/match_history_field_text_size"
             app:layout_constraintLeft_toLeftOf="@+id/guide_right_center"
             app:layout_constraintRight_toRightOf="@id/guide_right_edge"
-            app:layout_constraintTop_toBottomOf="@id/tv_field6"
-            android:text="X"
-            android:textSize="@dimen/match_history_field_text_size"
-            android:textAlignment="center"
-            android:gravity="center_horizontal"/>
+            app:layout_constraintTop_toBottomOf="@id/b_matchHistory_field6" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <Button
-        android:id="@+id/b_previous_move"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:background="@drawable/ic_arrow_left_background"
-        android:foreground="@drawable/ic_arrow_left_foreground"/>
-
-    <Button
-        android:id="@+id/b_next_move"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        android:background="@drawable/ic_arrow_right_background"
-        android:foreground="@drawable/ic_arrow_right_foreground"/>
-
-    <TextView
-        android:id="@+id/tv_labelTurn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/cl_game_field"
-        app:layout_constraintBottom_toTopOf="@id/b_next_move"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:text="Turn:"
-        android:textSize="50sp"/>
 
     <TextView
         android:id="@+id/tv_turn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/cl_game_field"
+        android:text="Turn: Player1"
+        android:textAllCaps="true"
+        android:textColor="@color/label"
+        android:textSize="@dimen/match_history_label_text_size"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/b_next_move"
-        app:layout_constraintLeft_toRightOf="@id/tv_labelTurn"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="Player1"
-        android:textSize="50sp"/>
+        app:layout_constraintTop_toBottomOf="@id/cl_game_field" />
 
+    <Button
+        android:id="@+id/b_previous_move"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/match_history_nav_btn_height"
+        android:foreground="@drawable/ic_baseline_arrow_left_24"
+        android:backgroundTint="@color/btn_background"
+        android:foregroundTint="@color/btn_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@id/guide_center"
+        app:layout_constraintTop_toBottomOf="@id/tv_turn" />
 
-
-
+    <Button
+        android:id="@+id/b_next_move"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:foreground="@drawable/ic_baseline_arrow_right_24"
+        android:backgroundTint="@color/btn_background"
+        android:foregroundTint="@color/btn_foreground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@id/guide_center"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_turn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

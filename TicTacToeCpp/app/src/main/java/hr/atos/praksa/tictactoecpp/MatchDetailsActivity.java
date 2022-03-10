@@ -17,7 +17,7 @@ public class MatchDetailsActivity extends AppCompatActivity {
 
     private TextView tvPlayerTurn;
     private Button bNextMove, bPreviousMove;
-    private ArrayList<TextView> tvFieldsList;
+    private ArrayList<Button> bFieldsList;
 
     private ArrayList<Move> movesList;
     private int moveNum = 1;
@@ -39,16 +39,20 @@ public class MatchDetailsActivity extends AppCompatActivity {
         tvPlayerTurn = findViewById(R.id.tv_turn);
         tvPlayerTurn.setText(match.getPlayer1());
 
-        tvFieldsList = new ArrayList<>();
-        tvFieldsList.add(findViewById(R.id.tv_field1));
-        tvFieldsList.add(findViewById(R.id.tv_field2));
-        tvFieldsList.add(findViewById(R.id.tv_field3));
-        tvFieldsList.add(findViewById(R.id.tv_field4));
-        tvFieldsList.add(findViewById(R.id.tv_field5));
-        tvFieldsList.add(findViewById(R.id.tv_field6));
-        tvFieldsList.add(findViewById(R.id.tv_field7));
-        tvFieldsList.add(findViewById(R.id.tv_field8));
-        tvFieldsList.add(findViewById(R.id.tv_field9));
+        bFieldsList = new ArrayList<>();
+        bFieldsList.add(findViewById(R.id.b_matchHistory_field1));
+        bFieldsList.add(findViewById(R.id.b_matchHistory_field2));
+        bFieldsList.add(findViewById(R.id.b_matchHistory_field3));
+        bFieldsList.add(findViewById(R.id.b_matchHistory_field4));
+        bFieldsList.add(findViewById(R.id.b_matchHistory_field5));
+        bFieldsList.add(findViewById(R.id.b_matchHistory_field6));
+        bFieldsList.add(findViewById(R.id.b_matchHistory_field7));
+        bFieldsList.add(findViewById(R.id.b_matchHistory_field8));
+        bFieldsList.add(findViewById(R.id.b_matchHistory_field9));
+
+        for(Button b : bFieldsList){
+            b.setEnabled(false);
+        }
 
         movesList = match.getMovesList();
 
@@ -90,15 +94,15 @@ public class MatchDetailsActivity extends AppCompatActivity {
         for(int i = 0; i < moveNum; i++){
             playedField = movesList.get(i).getPlayedField();
             if((i + 1) % 2 == 0)
-                tvFieldsList.get(playedField - 1).setText("O");
+                bFieldsList.get(playedField - 1).setText("O");
             else
-                tvFieldsList.get(playedField - 1).setText("X");
+                bFieldsList.get(playedField - 1).setText("X");
         }
-        tvFieldsList.get(playedField - 1).setTextColor(Color.RED);
+        bFieldsList.get(playedField - 1).setTextColor(Color.RED);
     }
 
     private void clearBoard(){
-        for(TextView tv : tvFieldsList){
+        for(TextView tv : bFieldsList){
             tv.setText("");
             tv.setTextColor(Color.WHITE);
         }
