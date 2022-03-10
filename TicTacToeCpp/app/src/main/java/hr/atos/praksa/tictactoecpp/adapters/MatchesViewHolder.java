@@ -16,7 +16,7 @@ public class MatchesViewHolder extends RecyclerView.ViewHolder implements View.O
     public MatchesViewHolder(@NonNull View itemView, OnMatchClickListener listener) {
         super(itemView);
         tvPlayer1 = itemView.findViewById(R.id.tv_player1Name);
-        tvPlayer2 = itemView.findViewById(R.id.tv_labelPlayer2);
+        tvPlayer2 = itemView.findViewById(R.id.tv_player2Name);
         tvWinner = itemView.findViewById(R.id.tv_Winner);
         this.listener = listener;
 

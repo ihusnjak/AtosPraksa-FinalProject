@@ -2,9 +2,12 @@
 <resources>
     <dimen name="width_menu_button">300dp</dimen>
     <dimen name="height_menu_button">100dp</dimen>
-    <dimen name="margin_menu_medium">40dp</dimen>
-    <dimen name="match_history_field_text_size">70sp</dimen>
     <dimen name="margin_small">20dp</dimen>
+    <dimen name="match_history_field_text_size">70sp</dimen>
+    <dimen name="margin_extra_small">10dp</dimen>
     <dimen name="match_history_label_text_size">40sp</dimen>
     <dimen name="match_history_nav_btn_height">100dp</dimen>
+    <dimen name="padding_small">20dp</dimen>
+    <dimen name="padding_extra_small">10dp</dimen>
+    <dimen name="separator_line_height">5dp</dimen>
 </resources>

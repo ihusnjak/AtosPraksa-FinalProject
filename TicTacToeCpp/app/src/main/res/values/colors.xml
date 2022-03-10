@@ -13,4 +13,8 @@
     <color name="label">#FFFFFF</color>
     <color name="btn_background">#FFFFFF</color>
     <color name="btn_foreground">#000000</color>
+    <color name="background_match_item">#121212</color>
+    <color name="separator_line">#FFFFFF</color>
+    <color name="secondary_background">#FFFFFF</color>
+    <color name="main_background">#121212</color>
 </resources>

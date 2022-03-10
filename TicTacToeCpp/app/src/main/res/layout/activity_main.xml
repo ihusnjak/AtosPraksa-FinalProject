@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/main_background">
 
     <Button
         android:id="@+id/b_humanVsHuman"
@@ -13,9 +14,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="@dimen/margin_menu_medium"
+        android:layout_marginTop="@dimen/margin_small"
         android:text="@string/label_humanVsHuman"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:backgroundTint="@color/btn_background"
+        android:textColor="@color/btn_foreground"
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/b_humanVsAi"
@@ -24,9 +28,12 @@
         app:layout_constraintTop_toBottomOf="@id/b_humanVsHuman"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="@dimen/margin_menu_medium"
+        android:layout_marginTop="@dimen/margin_small"
         android:text="@string/label_humanVsAi"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:backgroundTint="@color/btn_background"
+        android:textColor="@color/btn_foreground"
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/b_aiVsAi"
@@ -35,9 +42,12 @@
         app:layout_constraintTop_toBottomOf="@id/b_humanVsAi"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginTop="@dimen/margin_menu_medium"
+        android:layout_marginTop="@dimen/margin_small"
         android:text="@string/label_aiVsAi"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:backgroundTint="@color/btn_background"
+        android:textColor="@color/btn_foreground"
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/b_matchHistory"
@@ -46,8 +56,11 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginBottom="@dimen/margin_menu_medium"
+        android:layout_marginBottom="@dimen/margin_small"
         android:text="@string/label_matchHistory"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:backgroundTint="@color/btn_background"
+        android:textColor="@color/btn_foreground"
+        android:textStyle="bold"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
