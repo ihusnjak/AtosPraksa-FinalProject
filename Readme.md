@@ -10,7 +10,7 @@ Install this project by following these steps:
     pip install -r /TTT_w_GUI/requirements.txt
     run main.py located in TTT_w_GUI
     Enjoy
-    
+
 Modes
 --------
 
@@ -22,9 +22,4 @@ In development:
 
 - Play order selector
 - AI vs AI
-
-
-How it works:
--------
-    
 

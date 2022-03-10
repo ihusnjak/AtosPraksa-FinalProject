@@ -11,7 +11,15 @@ class GameLogic:
         # init p1 plays first
         self.playerSymbol = 1
 
-    #Checks winning conditions
+    """
+    Method that checks for winning conditions
+
+    Args: 
+    Returns: -1, 1, 0 or None
+            None --> No winning conditions and no ties
+            -1,1 --> Winning condition for one of the playersmybols
+            0 --> Tie
+    """
     def winner(self):
         # Checking rows
         for i in range(BOARD_ROWS):
