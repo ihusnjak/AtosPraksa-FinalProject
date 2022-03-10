@@ -11,14 +11,16 @@ import java.util.ArrayList;
 
 import hr.atos.praksa.tictactoe.adapters.MatchesAdapter;
 import hr.atos.praksa.tictactoe.listeners.OnMatchClickListener;
+import hr.atos.praksa.tictactoe.listeners.UiListener;
 import hr.atos.praksa.tictactoe.model.Match;
 import hr.atos.praksa.tictactoe.model.Move;
 
-public class MatchHistoryActivity extends AppCompatActivity implements OnMatchClickListener {
+public class MatchHistoryActivity extends AppCompatActivity implements OnMatchClickListener, UiListener {
 
     private RecyclerView recyclerView;
     private MatchesAdapter matchesAdapter;
     private ArrayList<Match> matchesList;
+    private RetrofitInstance retrofitInstance;
 
 
     @Override
@@ -26,36 +28,20 @@ public class MatchHistoryActivity extends AppCompatActivity implements OnMatchCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_history);
 
+        setupUiElements();
+
+        retrofitInstance = RetrofitInstance.getInstance();
+        retrofitInstance.setListener(this);
+        retrofitInstance.getAllMatchesFromServer();
+
+
+        matchesList = new ArrayList<>();
+    }
+
+    private void setupUiElements(){
         recyclerView = findViewById(R.id.rv_matchHistory);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        matchesList = new ArrayList<>();
-
-        matchesList.add(new Match("pero", "ivan", "ivan"));
-        matchesList.add(new Match("pero", "ivan", "pero"));
-        matchesList.add(new Match("iva", "ivan", "ivan"));
-        matchesList.add(new Match("ivica", "ivan", "ivica"));
-        matchesList.add(new Match("marko", "ivan", "tie"));
-        matchesList.add(new Match("petar", "ivan", "ivan"));
-        matchesList.add(new Match("ante", "ivan", "tie"));
-        matchesList.add(new Match("anto", "ivan", "anto"));
-        matchesList.add(new Match("kristijan", "ivan", "ivan"));
-        matchesList.add(new Match("pero", "ivan", "tie"));
-
-        matchesList.get(0).addMove(new Move(1, 3));
-        matchesList.get(0).addMove(new Move(2, 2));
-        matchesList.get(0).addMove(new Move(3, 5));
-        matchesList.get(0).addMove(new Move(4, 1));
-        matchesList.get(0).addMove(new Move(5, 7));
-        matchesList.get(0).addMove(new Move(6, 8));
-        matchesList.get(0).addMove(new Move(7, 4));
-        matchesList.get(0).addMove(new Move(8, 6));
-        matchesList.get(0).addMove(new Move(9, 9));
-
-        matchesAdapter = new MatchesAdapter(MatchHistoryActivity.this, matchesList, this);
-        recyclerView.setAdapter(matchesAdapter);
-        matchesAdapter.setOnMatchClickListener(MatchHistoryActivity.this);
     }
 
     @Override
@@ -65,5 +51,13 @@ public class MatchHistoryActivity extends AppCompatActivity implements OnMatchCl
         intent.putExtra("match", match);
 
         startActivity(intent);
+    }
+
+    @Override
+    public void onModificationPerformed(ArrayList<Match> matches) {
+        this.matchesList.addAll(matches);
+        matchesAdapter = new MatchesAdapter(MatchHistoryActivity.this, matchesList, this);
+        recyclerView.setAdapter(matchesAdapter);
+        matchesAdapter.setOnMatchClickListener(MatchHistoryActivity.this);
     }
 }

@@ -17,6 +17,12 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.1"/>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_bot_edge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6"/>
 
 
 
@@ -27,8 +33,42 @@
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/guide_top_edge">
+        app:layout_constraintTop_toTopOf="@id/guide_top_edge"
+        app:layout_constraintBottom_toBottomOf="@id/guide_bot_edge">
 
+        <View
+            android:layout_width="5dp"
+            android:layout_height="350dp"
+            android:background="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/guide_left_center"
+            app:layout_constraintBottom_toBottomOf="@id/tv_field7"/>
+
+        <View
+            android:layout_width="5dp"
+            android:layout_height="350dp"
+            android:background="@color/black"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="@id/guide_right_center"
+            app:layout_constraintBottom_toBottomOf="@id/tv_field7"/>
+
+        <View
+            android:layout_width="350dp"
+            android:layout_height="5dp"
+            android:background="@color/black"
+            app:layout_constraintLeft_toLeftOf="@id/guide_left_edge"
+            app:layout_constraintRight_toRightOf="@id/guide_right_edge"
+            app:layout_constraintTop_toBottomOf="@id/tv_field1"
+            app:layout_constraintBottom_toTopOf="@id/tv_field4"/>
+
+        <View
+            android:layout_width="350dp"
+            android:layout_height="5dp"
+            android:background="@color/black"
+            app:layout_constraintLeft_toLeftOf="@id/guide_left_edge"
+            app:layout_constraintRight_toRightOf="@id/guide_right_edge"
+            app:layout_constraintTop_toBottomOf="@id/tv_field4"
+            app:layout_constraintBottom_toTopOf="@id/tv_field7"/>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_left_edge"
