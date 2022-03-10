@@ -15,29 +15,32 @@ import hr.atos.praksa.tictactoecpp.model.Move;
 
 public class MatchDetailsActivity extends AppCompatActivity {
 
-    private TextView tvPlayerTurn;
+    private TextView tvPlayerTurn, tvMove, tvWinner;
     private Button bNextMove, bPreviousMove;
     private ArrayList<Button> bFieldsList;
-
+    private Match match;
     private ArrayList<Move> movesList;
     private int moveNum = 1;
-
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_match_details);
-
+        match = (Match) getIntent().getSerializableExtra("match");
         setupUiElements();
         drawBoard();
     }
 
-    private void setupUiElements(){
-        Match match = (Match) getIntent().getSerializableExtra("match");
+    private void setupUiElements() {
+        tvPlayerTurn = findViewById(R.id.tv_match_history_turn);
+        tvMove = findViewById(R.id.tv_matchHistory_move);
+        tvWinner = findViewById(R.id.tv_match_history_winner);
 
-        tvPlayerTurn = findViewById(R.id.tv_turn);
-        tvPlayerTurn.setText(match.getPlayer1());
+        tvWinner.setText("Winner: " + match.getWinner());
+        tvWinner.setVisibility(View.INVISIBLE);
+
+        updateMoveAndTurn();
 
         bFieldsList = new ArrayList<>();
         bFieldsList.add(findViewById(R.id.b_matchHistory_field1));
@@ -50,7 +53,7 @@ public class MatchDetailsActivity extends AppCompatActivity {
         bFieldsList.add(findViewById(R.id.b_matchHistory_field8));
         bFieldsList.add(findViewById(R.id.b_matchHistory_field9));
 
-        for(Button b : bFieldsList){
+        for (Button b : bFieldsList) {
             b.setEnabled(false);
         }
 
@@ -74,35 +77,51 @@ public class MatchDetailsActivity extends AppCompatActivity {
         });
     }
 
-    private void nextMove(){
-        if(moveNum < movesList.size()){
+    private void nextMove() {
+        if (moveNum < movesList.size()) {
             moveNum++;
+            updateMoveAndTurn();
             drawBoard();
         }
     }
 
-    private void previousMove(){
-        if(moveNum > 1){
+    private void previousMove() {
+        if (moveNum > 1) {
             moveNum--;
+            updateMoveAndTurn();
             drawBoard();
         }
     }
 
-    private void drawBoard(){
+    private void updateMoveAndTurn() {
+        if (moveNum % 2 == 0) {
+            tvPlayerTurn.setText("Turn: " + match.getPlayer2());
+        } else {
+            tvPlayerTurn.setText("Turn: " + match.getPlayer1());
+        }
+        tvMove.setText("Move: " + moveNum);
+    }
+
+    private void drawBoard() {
         clearBoard();
         int playedField = 1;
-        for(int i = 0; i < moveNum; i++){
+        for (int i = 0; i < moveNum; i++) {
             playedField = movesList.get(i).getPlayedField();
-            if((i + 1) % 2 == 0)
+            if ((i + 1) % 2 == 0)
                 bFieldsList.get(playedField - 1).setText("O");
             else
                 bFieldsList.get(playedField - 1).setText("X");
         }
         bFieldsList.get(playedField - 1).setTextColor(Color.RED);
+        if (moveNum >= match.getMovesList().size()) {
+            tvWinner.setVisibility(View.VISIBLE);
+        } else {
+            tvWinner.setVisibility(View.INVISIBLE);
+        }
     }
 
-    private void clearBoard(){
-        for(TextView tv : bFieldsList){
+    private void clearBoard() {
+        for (TextView tv : bFieldsList) {
             tv.setText("");
             tv.setTextColor(Color.WHITE);
         }
