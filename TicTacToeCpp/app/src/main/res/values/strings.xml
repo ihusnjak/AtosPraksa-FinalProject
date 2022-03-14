@@ -4,4 +4,8 @@
     <string name="label_humanVsAi">Human vs AI</string>
     <string name="label_aiVsAi">AI vs AI</string>
     <string name="label_matchHistory">Match History</string>
+    <string name="input_names">Input names</string>
+    <string name="player_2">Player 2</string>
+    <string name="player_1">Player 1</string>
+    <string name="submit">Submit</string>
 </resources>

@@ -24,6 +24,13 @@ public class MainActivity extends AppCompatActivity {
         bAiVsAi = findViewById(R.id.b_aiVsAi);
         bMatchHistory = findViewById(R.id.b_matchHistory);
 
+        bHumanVsHuman.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openPlayerInputActivity();
+            }
+        });
+
         bMatchHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -32,8 +39,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void openPlayerInputActivity(){
+        Intent intent = new Intent(this, PlayerInputActivity.class);
+        startActivity(intent);
+    }
+
     private void openMatchHistoryActivity() {
-        Intent intent = new Intent(this, MatchHistoryActivity.class);
+        Intent intent = new Intent(this, PlayerInputActivity.class);
         startActivity(intent);
     }
 }
