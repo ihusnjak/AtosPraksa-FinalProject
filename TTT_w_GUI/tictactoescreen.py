@@ -1,5 +1,7 @@
 from constants import *
 import mainmenuscreen
+import historyscreen
+import difficultyscreen
 import human_player
 from ai_player import AiPlayer
 from human_player import HumanPlayer
@@ -26,19 +28,24 @@ class TictactoeScreen(Frame):
          command=lambda:[self.destroy(), reset_state.set(1),self.startPvPGame()])
         self.btnPvAI = Button(self.frame,
          text="Play vs BOT",
-          command=lambda: [self.destroy(), reset_state.set(2),self.startPvAIGame()])
+          #command=lambda: [self.destroy(), reset_state.set(2),self.startPvAIGame()])
+          command=lambda: [self.destroy(), difficultyscreen.DifficultyScreen(app)])
+        self.btnHistory = Button(self.frame,
+         text="History",
+          command=lambda:[self.destroy(), historyscreen.HistoryScreen(app)])
         self.btnBack = Button(self.frame,
          text="Back",
           command=lambda:[self.destroy(), mainmenuscreen.MainMenuScreen(app)])
         
         #style buttons
-        for btn in (self.btnPvP, self.btnPvAI, self.btnBack):
+        for btn in (self.btnPvP, self.btnPvAI, self.btnHistory, self.btnBack):
             setBtnStyle(btn)
 
         #place buttons
-        self.btnPvP.place(x=initialXY, y=initialXY, width=btnWidth, height=btnHeight)
-        self.btnPvAI.place(x=initialXY, y=initialXY + incrementY, width=btnWidth, height=btnHeight)
-        self.btnBack.place(x=initialXY, y=initialXY + 2*incrementY, width=btnWidth, height=btnHeight)
+        self.btnPvP.place(x=initialXY, y=initialY4, width=btnWidth, height=btnHeight)
+        self.btnPvAI.place(x=initialXY, y=initialY4 + incrementY4, width=btnWidth, height=btnHeight)
+        self.btnHistory.place(x=initialXY, y=initialY4 + 2*incrementY4, width=btnWidth, height=btnHeight)
+        self.btnBack.place(x=initialXY, y=initialY4 + 3*incrementY4, width=btnWidth, height=btnHeight)
 
 
 
