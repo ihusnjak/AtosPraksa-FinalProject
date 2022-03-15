@@ -5,6 +5,7 @@
 #include <vector>
 #include <algorithm>
 #include <string>
+#include <iostream>
 
 int QPlayer::play(std::shared_ptr<Board> board){
     int board_value, move;
@@ -22,15 +23,14 @@ int QPlayer::play(std::shared_ptr<Board> board){
         if (board->is_valid(i) && Qvalues->at(i - 1) > max) {
             max = Qvalues->at(i - 1);
 
-            //if QPlayer is not sure about his move, play something random
-            if(max > Const::CUTOFF_Q_VALUE){
-                move = i;
-            }else{
-                do {
-                    move = helper_random_player->play(board);
-                }while(!board->is_valid(move));
-            }
+            move = i;
         }
+    }
+
+    if(max <= Const::CUTOFF_Q_VALUE){
+        do {
+            move = helper_random_player->play(board);
+        }while(!board->is_valid(move));
     }
 
     return move;
@@ -49,7 +49,7 @@ int QPlayer::train(std::shared_ptr<Board> board) {
 }
 
 void QPlayer::update_table(std::shared_ptr<Board> board) {
-    float reward, max = -1;
+    float reward, max = 0;
     std::vector<int> board_v;
     Game::GameState state;
     std::shared_ptr<std::vector<float>> Qvalues;
@@ -68,18 +68,17 @@ void QPlayer::update_table(std::shared_ptr<Board> board) {
 
     for(int i = game_history->size() - 1; i > 1 ; i-=2){
         board_value = game_history->at(i-1);
+
         Q_index = game_history->at(i) - 1;
         Qvalues = table->get_values(board_value);
-        if(max < 0){
-            Qvalues->at(Q_index) = reward;
-        }else{
-            Qvalues->at(Q_index) = (1-Const::Q_LEARNING_RATE)*Qvalues->at(Q_index) +
-                                            Const::Q_LEARNING_RATE*Const::Q_DISCOUNT_RATE*max;
-        }
+
+        Qvalues->at(Q_index) = (1-Const::Q_LEARNING_RATE)*Qvalues->at(Q_index) +
+                                            Const::Q_LEARNING_RATE*(reward+Const::Q_DISCOUNT_RATE*max);
 
         table->add_key_value(board_value, *Qvalues);
 
         max = *std::max_element(Qvalues->begin(), Qvalues->end());
+        reward = 0;
     }
 
     game_history->clear();
@@ -106,9 +105,7 @@ void QPlayer::load_table() {
 
 QPlayer::QPlayer(Player::PlayerSymbol symbol):Player(symbol) {
     table = std::make_shared<QTable>();
-    try{
-        load_table();
-    }catch(std::exception& e){}
+    load_table();
     game_history = std::make_shared<std::vector<int>>();
     helper_random_player = std::make_unique<RandomPlayer>(symbol);
 }

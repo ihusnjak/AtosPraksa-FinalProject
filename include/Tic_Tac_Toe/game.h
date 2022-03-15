@@ -15,6 +15,7 @@ class Game{
         std::unique_ptr<Player> player_O = nullptr;
         std::unique_ptr<QPlayer> q_player_train_X = nullptr;
         std::unique_ptr<QPlayer> q_player_train_O = nullptr;
+        std::unique_ptr<RandomPlayer> helper_random_player = nullptr;
 
     public:
 
@@ -34,7 +35,9 @@ class Game{
 
         friend bool operator==(const Game::GameState& gameState, const Player::PlayerSymbol& symbol);
 
-        void train_Qplayers();
+        void train_Qplayer_X();
+
+        void train_Qplayer_O();
 
         void train_loop(int n);
 };

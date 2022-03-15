@@ -84,10 +84,9 @@ void QTable::load_table(const std::string &filename) {
     std::stringstream stream;
 
     std::vector<std::string> substrings;
-    std::vector<float> data;
+    std::vector<float> values;
 
     int key;
-    std::vector<float> values(Const::N_FIELDS);
 
     std::ifstream file;
     file.open(filename);
@@ -103,16 +102,15 @@ void QTable::load_table(const std::string &filename) {
             substrings.push_back(substring);
         }
 
-        std::transform(substrings.begin(), substrings.end(), std::back_inserter(data),
+        std::transform(substrings.begin()+1, substrings.end(), std::back_inserter(values),
                        [](const std::string& str) { return std::stof(str); });
 
-        key = int(data.at(0));
-        std::copy(data.begin()+1, data.end(), values.begin());
+        key = std::stoi(substrings.at(0));
 
         add_key_value(key, values);
 
         substrings.clear();
-        data.clear();
+        values.clear();
     }
     file.close();
 }

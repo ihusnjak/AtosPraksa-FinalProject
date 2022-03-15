@@ -26,8 +26,7 @@ Game::Game(std::unique_ptr<Player>& player_one, std::unique_ptr<Player>& player_
 
 Game::Game(){
     this->board = std::make_unique<Board>();
-    this->player_X = std::make_unique<HumanPlayer>(Player::PlayerSymbol::X);
-    this->player_O = std::make_unique<RandomPlayer>(Player::PlayerSymbol::O);
+    this->helper_random_player = std::make_unique<RandomPlayer>(Player::PlayerSymbol::X);
 }
 
 void Game::reset_game() {
@@ -97,10 +96,9 @@ bool operator==(const Game::GameState& gameState, const Player::PlayerSymbol& sy
     return equals;
 }
 
-void Game::train_Qplayers() {
+void Game::train_Qplayer_X() {
     if(!q_player_train_X){
         q_player_train_X = std::make_unique<QPlayer>(Player::PlayerSymbol::X);
-        q_player_train_O = std::make_unique<QPlayer>(Player::PlayerSymbol::O);
     }
 
     GameState state = GameState::Ongoing;
@@ -121,13 +119,46 @@ void Game::train_Qplayers() {
         }
 
         do{
-            input = q_player_train_O->train(this->board);
+            input = helper_random_player->play(this->board);
         }while(!board->enter_input(input, Const::O_VALUE));
 
         state = game_state();
     }
 
     q_player_train_X->update_table(board);
+
+    this->reset_game();
+}
+
+void Game::train_Qplayer_O() {
+    if(!q_player_train_O){
+        q_player_train_O = std::make_unique<QPlayer>(Player::PlayerSymbol::O);
+    }
+
+    GameState state = GameState::Ongoing;
+    int input = 0;
+
+    if(!this->board){
+        throw std::runtime_error(board_null_error_msg);
+    }
+
+    while(state == GameState::Ongoing){
+        do{
+            input = helper_random_player->play(this->board);
+        }while(!board->enter_input(input, Const::X_VALUE));
+
+        state = game_state();
+        if(state != GameState::Ongoing){
+            break;
+        }
+
+        do{
+            input = q_player_train_O->train(this->board);
+        }while(!board->enter_input(input, Const::O_VALUE));
+
+        state = game_state();
+    }
+
     q_player_train_O->update_table(board);
 
     this->reset_game();
@@ -135,7 +166,8 @@ void Game::train_Qplayers() {
 
 void Game::train_loop(int n) {
     for(int i = 0; i < n; i++){
-        train_Qplayers();
+        train_Qplayer_X();
+        train_Qplayer_O();
     }
     q_player_train_X->save_table();
     q_player_train_O->save_table();

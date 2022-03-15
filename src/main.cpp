@@ -8,14 +8,9 @@
 #include <vector>
 #include <memory>
 
-float Const::CUTOFF_Q_VALUE = 0.0;
-
 void train(int n){
     std::unique_ptr<Game> game(new Game());
-    for(int i = 5; i >= 0; i--){
-        Const::CUTOFF_Q_VALUE = i/10.0;
-        game->train_loop(n);
-    }
+    game->train_loop(n);
 }
 
 void play(int which_human){
@@ -43,8 +38,8 @@ void play(int which_human){
 
 int main(){
     try {
-        //train(100000);
-        play(1);
+        //train(20000);
+        play(2);
     }catch(std::exception& e){
         std::cout << e.what() << std::endl;
     }

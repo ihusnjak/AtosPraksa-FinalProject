@@ -11,7 +11,7 @@ namespace Const{
     const float Q_DEFAULT_VALUE = 0.0;
     const float Q_LEARNING_RATE = 0.9;
     const float Q_DISCOUNT_RATE = 0.95;
-    extern float CUTOFF_Q_VALUE;
+    const float CUTOFF_Q_VALUE = 0.0;
     const int N_ROW_COLUMN = 3;
     const int N_FIELDS = N_ROW_COLUMN * N_ROW_COLUMN;
     const int X_VALUE = 1;
