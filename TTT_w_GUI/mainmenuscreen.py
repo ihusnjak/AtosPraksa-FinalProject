@@ -24,5 +24,7 @@ class MainMenuScreen(Frame):
         self.btnExit.place(x=initialXY, y=initialXY + incrementY, width=btnWidth, height=btnHeight)
     
     def quitProgram(self):
+        app.destroy()
         quit()
+        
 
