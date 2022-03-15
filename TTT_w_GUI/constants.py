@@ -8,6 +8,8 @@ btnWidth = 300
 btnHeight = 70
 initialXY = 50
 incrementY = btnHeight + initialXY
+initialY4 = 23
+incrementY4 = btnHeight + initialY4
 gsBtnWidth = 100
 gsBtnHeight = 50
 gsFieldBtnDim = 2
@@ -21,7 +23,13 @@ btnFgColor = "#FFFFFF"
 btnActiveColor = "#3B83BA"
 
 app = Tk()
-app.geometry(str(windowWidth) + "x" + str(windowHeight))
+#app.geometry(str(windowWidth) + "x" + str(windowHeight))
+screenWidth = app.winfo_screenwidth()
+screenHeight = app.winfo_screenheight()
+xPosition = (screenWidth / 2) - (windowWidth / 2)
+yPosition = (screenHeight / 2) - (windowHeight / 2)
+app.title('AI GAMES')
+app.geometry('%dx%d+%d+%d' % (windowWidth, windowHeight, xPosition, yPosition))
 app.resizable(False, False)
 
 def setBtnStyle(btn):

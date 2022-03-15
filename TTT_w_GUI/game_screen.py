@@ -3,6 +3,7 @@ import tictactoescreen
 import game_logic
 from ai_player import AiPlayer
 from human_player import HumanPlayer
+import playvscomp_screen
 
 """
 Class used for displaying Tic Tac Toe board
@@ -148,6 +149,8 @@ class GameScreen(Frame):
         if(reset_state.get() == 1): 
             tictactoescreen.TictactoeScreen.startPvPGame()
         elif(reset_state.get() == 2):
-            tictactoescreen.TictactoeScreen.startPvAIGame()
+            playvscomp_screen.PlayVsCompScreen.startPvAIGameFirst()
+        elif(reset_state.get() == 3):
+            playvscomp_screen.PlayVsCompScreen.startPvAIGameSecond()
 
 
