@@ -1,5 +1,6 @@
 from constants import *
 import tictactoescreen 
+import sys
 
 class MainMenuScreen(Frame):
     def __init__(self, container):
@@ -25,6 +26,7 @@ class MainMenuScreen(Frame):
     
     def quitProgram(self):
         app.destroy()
-        quit()
+        app.quit()
+        sys.exit()
         
 

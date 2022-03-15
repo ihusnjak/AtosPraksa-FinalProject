@@ -2,6 +2,7 @@ from constants import *
 import numpy as np
 from popups import PopupMessage
 from game_screen import GameScreen
+import requests
 
 class GameLogic:
     def __init__(self, p1, p2):
@@ -10,6 +11,7 @@ class GameLogic:
         self.isEnd = False
         # init p1 plays first
         self.playerSymbol = 1
+        self.counter = 0
 
     """
     Method that checks for winning conditions
@@ -94,6 +96,7 @@ class GameLogic:
         board = np.zeros((BOARD_ROWS, BOARD_COLS))
         isEnd = False
         playerSymbol = 1
+        game_dict.clear()
         
 
 
@@ -132,6 +135,15 @@ class GameLogic:
             self.updateState(p2_action)
             return p2_action
 
+
+    def postMatch(self,game_dict):
+            try:
+                r=requests.post("http://188.166.133.147:8081/", json=game_dict)
+                r.raise_for_status()
+            except requests.exceptions.HTTPError as e:
+                 print (e.response.text)
+
+
     """
     Method user for checking the board for a winner after every move and calling popup class for displaying it.
     Cheking for winner is done by winner() method defined above which returns 1/-1/None depending on the outcome
@@ -140,16 +152,28 @@ class GameLogic:
     Returns : 
     """
     def checkwin(self,player):
+        global game_dict
         win = self.winner()
         if win is not None:
             if win == 1:
                 PopupMessage(app,player)
+                game_dict["winner"] = player
             elif win == -1:
                 PopupMessage(app,player)
+                game_dict["winner"] = player
             else:
                 PopupMessage(app,"Tie")
-            self.reset()   
+                game_dict["winner"] = "None"
+                  
+            self.postMatch(game_dict)
+            self.reset()
+            self.counter = 0
+            return 0    
         
+
+    def movesList(self,playerField):
+        self.counter += 1
+        game_dict["moves"] += [{"moveNo": self.counter, "playedField": playerField}]
 
     """
     Used for separating/chosing gamemodes and assigning play orders
@@ -162,34 +186,47 @@ class GameLogic:
         
     """
     def play(self,gamemode):
+        global game_dict
+        game_dict["player1"]=self.p1.name
+        game_dict["player2"]=self.p2.name
+        game_dict["moves"] = []
+        
+
         btn = GameScreen(app)
         if(gamemode == 0): 
             while not self.isEnd:
                 action = self.humanPlayerAction(1)
-                btn.changeButtonState(action)
-                self.checkwin(self.p1.name)
+                playerField = btn.changeButtonState(action)
+                self.movesList(playerField)
+                if(self.checkwin(self.p1.name)==0): break
 
                 action = self.humanPlayerAction(2)
-                btn.changeButtonState(action)
-                self.checkwin(self.p2.name)
+                playerField = btn.changeButtonState(action)
+                self.movesList(playerField)
+                if(self.checkwin(self.p2.name)==0): break
+
         elif(gamemode == 1):
             while not self.isEnd:
                 action = self.humanPlayerAction(1)
-                btn.changeButtonState(action)
-                self.checkwin(self.p1.name)   
+                playerField = btn.changeButtonState(action)
+                self.movesList(playerField)
+                if(self.checkwin(self.p1.name)==0): break   
 
                 action = self.aiPlayerAction(2)
-                btn.changeButtonState(action)
-                self.checkwin(self.p2.name)
+                playerField = btn.changeButtonState(action)
+                self.movesList(playerField)
+                if(self.checkwin(self.p2.name)==0): break
 
         elif(gamemode == 2):
             while not self.isEnd:
                 action = self.aiPlayerAction(1)
-                btn.changeButtonState(action)
-                self.checkwin(self.p1.name)
+                playerField = btn.changeButtonState(action)
+                self.movesList(playerField)
+                if(self.checkwin(self.p1.name)==0): break
 
                 action = self.humanPlayerAction(2)
-                btn.changeButtonState(action)
-                self.checkwin(self.p2.name)     
+                playerField = btn.changeButtonState(action)
+                self.movesList(playerField)
+                if(self.checkwin(self.p2.name)==0): break      
 
 

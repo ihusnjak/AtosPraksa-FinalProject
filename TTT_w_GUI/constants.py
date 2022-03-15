@@ -47,3 +47,6 @@ BOARD_ROWS = 3
 BOARD_COLS = 3
 board = np.zeros((BOARD_ROWS, BOARD_COLS))
 
+#json constants
+game_dict = {}
+playerField = 0

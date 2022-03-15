@@ -60,6 +60,7 @@ class GameScreen(Frame):
 
     Receives action tuple and based on the coordinates in it and count number puts either X or O
     Params: action tuple (x,y) that tell us desired boadd position 
+    Returns: number that represents board position
 
     """
     def changeButtonState(self,action):
@@ -71,6 +72,7 @@ class GameScreen(Frame):
                 self.btnB1.configure(text="O")
             count +=1
             self.btnB1.configure(state ="disabled")
+            return 1
         elif(action[0] == 0 and action[1] == 1):
             if(count % 2 == 0):
                 self.btnB2.configure(text="X")    
@@ -78,6 +80,7 @@ class GameScreen(Frame):
                 self.btnB2.configure(text="O")
             count +=1  
             self.btnB2.configure(state ="disabled")
+            return 2
         elif(action[0] == 0 and action[1] == 2):
             if(count % 2 == 0):
                 self.btnB3.configure(text="X")    
@@ -85,6 +88,7 @@ class GameScreen(Frame):
                 self.btnB3.configure(text="O")
             count +=1    
             self.btnB3.configure(state ="disabled")
+            return 3
         elif(action[0] == 1 and action[1] == 0):
             if(count % 2 == 0):
                 self.btnB4.configure(text="X")    
@@ -92,6 +96,7 @@ class GameScreen(Frame):
                 self.btnB4.configure(text="O")
             count +=1  
             self.btnB4.configure(state ="disabled")
+            return 4
         elif(action[0] == 1 and action[1] == 1):
             if(count % 2 == 0):
                 self.btnB5.configure(text="X")    
@@ -99,6 +104,7 @@ class GameScreen(Frame):
                 self.btnB5.configure(text="O")
             count +=1    
             self.btnB5.configure(state ="disabled")
+            return 5
         elif(action[0] == 1 and action[1] == 2):
             if(count % 2 == 0):
                self.btnB6.configure(text="X")    
@@ -106,6 +112,7 @@ class GameScreen(Frame):
                 self.btnB6.configure(text="O")
             count +=1    
             self.btnB6.configure(state ="disabled")
+            return 6
         elif(action[0] == 2 and action[1] == 0):
             if(count % 2 == 0):
                 self.btnB7.configure(text="X")    
@@ -113,6 +120,7 @@ class GameScreen(Frame):
                 self.btnB7.configure(text="O")
             count +=1    
             self.btnB7.configure(state ="disabled")
+            return 7
         elif(action[0] == 2 and action[1] == 1):
             if(count % 2 == 0):
                 self.btnB8.configure(text="X")    
@@ -120,6 +128,7 @@ class GameScreen(Frame):
                 self.btnB8.configure(text="O")
             count +=1    
             self.btnB8.configure(state ="disabled")
+            return 8
         elif(action[0] == 2 and action[1] == 2):
             if(count % 2 == 0):
                 self.btnB9.configure(text="X")    
@@ -127,6 +136,7 @@ class GameScreen(Frame):
                 self.btnB9.configure(text="O")
             count +=1    
             self.btnB9.configure(state ="disabled")
+            return 9
         else:
             print("Invalid input") 
     
