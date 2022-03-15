@@ -3,6 +3,7 @@
 #include "Tic_Tac_Toe/helper_functions.h"
 #include "Tic_Tac_Toe/human_player.h"
 #include "Tic_Tac_Toe/random_player.h"
+#include "Tic_Tac_Toe/q_player.h"
 #include <memory>
 #include <vector>
 #include <iostream>
@@ -96,7 +97,46 @@ bool operator==(const Game::GameState& gameState, const Player::PlayerSymbol& sy
     return equals;
 }
 
-int Game::make_move(int move) {
-    //TODO IMPLEMENT MOVE BY MOVE GAME
-    return 0;
+void Game::train_Qplayers() {
+    if(!q_player_train_X){
+        q_player_train_X = std::make_unique<QPlayer>(Player::PlayerSymbol::X);
+        q_player_train_O = std::make_unique<QPlayer>(Player::PlayerSymbol::O);
+    }
+
+    GameState state = GameState::Ongoing;
+    int input = 0;
+
+    if(!this->board){
+        throw std::runtime_error(board_null_error_msg);
+    }
+
+    while(state == GameState::Ongoing){
+        do{
+            input = q_player_train_X->train(this->board);
+        }while(!board->enter_input(input, Const::X_VALUE));
+
+        state = game_state();
+        if(state != GameState::Ongoing){
+            break;
+        }
+
+        do{
+            input = q_player_train_O->train(this->board);
+        }while(!board->enter_input(input, Const::O_VALUE));
+
+        state = game_state();
+    }
+
+    q_player_train_X->update_table(board);
+    q_player_train_O->update_table(board);
+
+    this->reset_game();
+}
+
+void Game::train_loop(int n) {
+    for(int i = 0; i < n; i++){
+        train_Qplayers();
+    }
+    q_player_train_X->save_table();
+    q_player_train_O->save_table();
 }

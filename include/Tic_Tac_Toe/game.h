@@ -3,6 +3,7 @@
 #include "Tic_Tac_Toe/board.h"
 #include "Tic_Tac_Toe/constants.h"
 #include "Tic_Tac_Toe/player.h"
+#include "Tic_Tac_Toe/q_player.h"
 #include <string>
 #include <memory>
 
@@ -12,6 +13,8 @@ class Game{
         std::shared_ptr<Board> board = nullptr;
         std::unique_ptr<Player> player_X = nullptr;
         std::unique_ptr<Player> player_O = nullptr;
+        std::unique_ptr<QPlayer> q_player_train_X = nullptr;
+        std::unique_ptr<QPlayer> q_player_train_O = nullptr;
 
     public:
 
@@ -31,5 +34,7 @@ class Game{
 
         friend bool operator==(const Game::GameState& gameState, const Player::PlayerSymbol& symbol);
 
-        int make_move(int move);
+        void train_Qplayers();
+
+        void train_loop(int n);
 };
