@@ -1,4 +1,5 @@
-from constants import *
+import constants
+import global_variables
 import numpy as np
 from popups import PopupMessage
 from game_screen import GameScreen
@@ -9,6 +10,7 @@ class GameLogic:
         self.p1 = p1
         self.p2 = p2
         self.isEnd = False
+        self.board = np.zeros((constants.BOARD_ROWS, constants.BOARD_COLS))
         # init p1 plays first
         self.playerSymbol = 1
         self.counter = 0
@@ -24,24 +26,24 @@ class GameLogic:
     """
     def winner(self):
         # Checking rows
-        for i in range(BOARD_ROWS):
-            if sum(board[i, :]) == 3:
+        for i in range(constants.BOARD_ROWS):
+            if sum(self.board[i, :]) == 3:
                 self.isEnd = True
                 return 1
-            if sum(board[i, :]) == -3:
+            if sum(self.board[i, :]) == -3:
                 self.isEnd = True
                 return -1
         # Checking columns
-        for i in range(BOARD_COLS):
-            if sum(board[:, i]) == 3:
+        for i in range(constants.BOARD_COLS):
+            if sum(self.board[:, i]) == 3:
                 self.isEnd = True
                 return 1
-            if sum(board[:, i]) == -3:
+            if sum(self.board[:, i]) == -3:
                 self.isEnd = True
                 return -1
         # Checking diagonals
-        diag_sum1 = sum([board[i, i] for i in range(BOARD_COLS)])
-        diag_sum2 = sum([board[i, BOARD_COLS - i - 1] for i in range(BOARD_COLS)])
+        diag_sum1 = sum([self.board[i, i] for i in range(constants.BOARD_COLS)])
+        diag_sum2 = sum([self.board[i, constants.BOARD_COLS - i - 1] for i in range(constants.BOARD_COLS)])
         diag_sum = max(abs(diag_sum1), abs(diag_sum2))
         if diag_sum == 3:
             self.isEnd = True
@@ -68,9 +70,9 @@ class GameLogic:
 
     def availablePositions(self):
         positions = []
-        for i in range(BOARD_ROWS):
-            for j in range(BOARD_COLS):
-                if board[i, j] == 0:
+        for i in range(constants.BOARD_ROWS):
+            for j in range(constants.BOARD_COLS):
+                if self.board[i, j] == 0:
                     positions.append((i, j))  
         return positions
 
@@ -82,7 +84,7 @@ class GameLogic:
 
     """
     def updateState(self, position):
-        board[position] = self.playerSymbol
+        self.board[position] = self.playerSymbol
         # Switch to another player
         self.playerSymbol *= -1
 
@@ -93,10 +95,10 @@ class GameLogic:
         global playerSymbol
         global isEnd
 
-        board = np.zeros((BOARD_ROWS, BOARD_COLS))
+        board = np.zeros((constants.BOARD_ROWS, constants.BOARD_COLS))
         isEnd = False
         playerSymbol = 1
-        game_dict.clear()
+        global_variables.game_dict.clear()
         
 
 
@@ -127,11 +129,11 @@ class GameLogic:
     def aiPlayerAction(self,play_order):
         positions = self.availablePositions()
         if(play_order == 1):
-            p1_action = self.p1.chooseAction(positions, board, self.playerSymbol)
+            p1_action = self.p1.chooseAction(positions, self.board, self.playerSymbol)
             self.updateState(p1_action)
             return p1_action
         else:
-            p2_action = self.p2.chooseAction(positions, board, self.playerSymbol)
+            p2_action = self.p2.chooseAction(positions, self.board, self.playerSymbol)
             self.updateState(p2_action)
             return p2_action
 
@@ -152,20 +154,20 @@ class GameLogic:
     Returns : 
     """
     def checkwin(self,player):
-        global game_dict
+        global_variables.game_dict
         win = self.winner()
         if win is not None:
             if win == 1:
-                PopupMessage(app,player)
-                game_dict["winner"] = player
+                PopupMessage(constants.app,player)
+                global_variables.game_dict["winner"] = player
             elif win == -1:
-                PopupMessage(app,player)
-                game_dict["winner"] = player
+                PopupMessage(constants.app,player)
+                global_variables.game_dict["winner"] = player
             else:
-                PopupMessage(app,"Tie")
-                game_dict["winner"] = "None"
+                PopupMessage(constants.app,"Tie")
+                global_variables.game_dict["winner"] = "None"
                   
-            self.postMatch(game_dict)
+            self.postMatch(global_variables.game_dict)
             self.reset()
             self.counter = 0
             return 0    
@@ -173,7 +175,7 @@ class GameLogic:
 
     def movesList(self,playerField):
         self.counter += 1
-        game_dict["moves"] += [{"moveNo": self.counter, "playedField": playerField}]
+        global_variables.game_dict["moves"] += [{"moveNo": self.counter, "playedField": playerField}]
 
     """
     Used for separating/chosing gamemodes and assigning play orders
@@ -186,13 +188,12 @@ class GameLogic:
         
     """
     def play(self,gamemode):
-        global game_dict
-        game_dict["player1"]=self.p1.name
-        game_dict["player2"]=self.p2.name
-        game_dict["moves"] = []
+        global_variables.game_dict["player1"]=self.p1.name
+        global_variables.game_dict["player2"]=self.p2.name
+        global_variables.game_dict["moves"] = []
         
 
-        btn = GameScreen(app)
+        btn = GameScreen(constants.app)
         if(gamemode == 0): 
             while not self.isEnd:
                 action = self.humanPlayerAction(1)

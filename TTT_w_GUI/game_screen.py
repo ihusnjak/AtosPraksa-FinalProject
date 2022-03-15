@@ -1,8 +1,7 @@
 from constants import *
+import global_variables
 import tictactoescreen
 import game_logic
-from ai_player import AiPlayer
-from human_player import HumanPlayer
 import playvscomp_screen
 
 """
@@ -15,9 +14,12 @@ class GameScreen(Frame):
         #frame size and color
         self.frame = Frame(container, background=backgroundColor, width=windowWidth, height=windowHeight).place(x=0, y=0)
         self.buttons()
+        
 
         #define board buttons
+
     def buttons(self):
+
         self.btnB1 = Button(self.frame, text=" ", font=("arial bold", 20), height=gsFieldBtnDim, width=gsFieldBtnDim*2, command=lambda: playeraction.set(1))
         self.btnB2 = Button(self.frame, text=" ", font=("arial bold", 20), height=gsFieldBtnDim, width=gsFieldBtnDim*2, command=lambda: playeraction.set(2))
         self.btnB3 = Button(self.frame, text=" ", font=("arial bold", 20), height=gsFieldBtnDim, width=gsFieldBtnDim*2, command=lambda: playeraction.set(3))
@@ -64,77 +66,76 @@ class GameScreen(Frame):
 
     """
     def changeButtonState(self,action):
-        global count
         if(action[0] == 0 and action[1] == 0):
-            if(count % 2 == 0):
+            if(global_variables.count % 2 == 0):
                 self.btnB1.configure(text="X") 
             else:
                 self.btnB1.configure(text="O")
-            count +=1
+            global_variables.count +=1
             self.btnB1.configure(state ="disabled")
             return 1
         elif(action[0] == 0 and action[1] == 1):
-            if(count % 2 == 0):
+            if(global_variables.count % 2 == 0):
                 self.btnB2.configure(text="X")    
             else:
                 self.btnB2.configure(text="O")
-            count +=1  
+            global_variables.count +=1  
             self.btnB2.configure(state ="disabled")
             return 2
         elif(action[0] == 0 and action[1] == 2):
-            if(count % 2 == 0):
+            if(global_variables.count % 2 == 0):
                 self.btnB3.configure(text="X")    
             else:
                 self.btnB3.configure(text="O")
-            count +=1    
+            global_variables.count +=1    
             self.btnB3.configure(state ="disabled")
             return 3
         elif(action[0] == 1 and action[1] == 0):
-            if(count % 2 == 0):
+            if(global_variables.count % 2 == 0):
                 self.btnB4.configure(text="X")    
             else:
                 self.btnB4.configure(text="O")
-            count +=1  
+            global_variables.count +=1  
             self.btnB4.configure(state ="disabled")
             return 4
         elif(action[0] == 1 and action[1] == 1):
-            if(count % 2 == 0):
+            if(global_variables.count % 2 == 0):
                 self.btnB5.configure(text="X")    
             else:
                 self.btnB5.configure(text="O")
-            count +=1    
+            global_variables.count +=1    
             self.btnB5.configure(state ="disabled")
             return 5
         elif(action[0] == 1 and action[1] == 2):
-            if(count % 2 == 0):
+            if(global_variables.count % 2 == 0):
                self.btnB6.configure(text="X")    
             else:
                 self.btnB6.configure(text="O")
-            count +=1    
+            global_variables.count +=1    
             self.btnB6.configure(state ="disabled")
             return 6
         elif(action[0] == 2 and action[1] == 0):
-            if(count % 2 == 0):
+            if(global_variables.count % 2 == 0):
                 self.btnB7.configure(text="X")    
             else:
                 self.btnB7.configure(text="O")
-            count +=1    
+            global_variables.count +=1    
             self.btnB7.configure(state ="disabled")
             return 7
         elif(action[0] == 2 and action[1] == 1):
-            if(count % 2 == 0):
+            if(global_variables.count % 2 == 0):
                 self.btnB8.configure(text="X")    
             else:
                 self.btnB8.configure(text="O")
-            count +=1    
+            global_variables.count +=1    
             self.btnB8.configure(state ="disabled")
             return 8
         elif(action[0] == 2 and action[1] == 2):
-            if(count % 2 == 0):
+            if(global_variables.count % 2 == 0):
                 self.btnB9.configure(text="X")    
             else:
                 self.btnB9.configure(text="O")
-            count +=1    
+            global_variables.count +=1    
             self.btnB9.configure(state ="disabled")
             return 9
         else:
@@ -154,8 +155,7 @@ class GameScreen(Frame):
             btn["text"]=" "
             btn["state"] = "normal"
         game_logic.GameLogic.reset()
-        global count
-        count = 0
+        global_variables.count = 0
         if(reset_state.get() == 1): 
             tictactoescreen.TictactoeScreen.startPvPGame()
         elif(reset_state.get() == 2):

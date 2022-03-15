@@ -1,5 +1,4 @@
 from tkinter import *
-import numpy as np
 
 #define GUI constants
 windowWidth = 400
@@ -41,12 +40,9 @@ def setBtnStyle(btn):
     
 #logic constants
 reset_state = IntVar()
-count = 0
 playeraction = IntVar()
 BOARD_ROWS = 3
 BOARD_COLS = 3
-board = np.zeros((BOARD_ROWS, BOARD_COLS))
+options = {1: (0, 0), 2: (0, 1), 3: (0, 2),4: (1, 0), 5: (1, 1), 6: (1, 2), 7: (2, 0), 8: (2, 1), 9: (2, 2)}
 
 #json constants
-game_dict = {}
-playerField = 0

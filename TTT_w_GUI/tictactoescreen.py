@@ -1,12 +1,8 @@
 from constants import *
 import mainmenuscreen
-import historyscreen
 import difficultyscreen
-import human_player
-from ai_player import AiPlayer
 from human_player import HumanPlayer
 import game_logic
-import sys
 
 
 """
