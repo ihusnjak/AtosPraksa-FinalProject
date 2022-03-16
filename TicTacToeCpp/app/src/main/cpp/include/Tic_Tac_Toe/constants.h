@@ -1,6 +1,17 @@
 #pragma once
 
+#include <string>
+
 namespace Const{
+    const std::string POLICY_PATH_X = R"(C:\Users\dijana\CLionProjects\tic\policy_x.csv)";
+    const std::string POLICY_PATH_O = R"(C:\Users\dijana\CLionProjects\tic\policy_o.csv)";
+    const float Q_WIN_REWARD = 1.0;
+    const float Q_DRAW_REWARD = 0.5;
+    const float Q_LOSE_REWARD = 0.0;
+    const float Q_DEFAULT_VALUE = 0.0;
+    const float Q_LEARNING_RATE = 0.9;
+    const float Q_DISCOUNT_RATE = 0.95;
+    const float CUTOFF_Q_VALUE = 0.0;
     const int N_ROW_COLUMN = 3;
     const int N_FIELDS = N_ROW_COLUMN * N_ROW_COLUMN;
     const int X_VALUE = 1;

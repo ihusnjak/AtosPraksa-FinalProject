@@ -10,7 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity {
 
     private Button bHumanVsHuman, bHumanVsAi, bAiVsAi, bMatchHistory;
-
+    static {
+        System.loadLibrary("Tic_Tac_Toe");
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

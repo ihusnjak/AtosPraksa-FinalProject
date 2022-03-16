@@ -10,5 +10,6 @@ class MinMaxPlayer: public Player{
         int minmax(std::vector<int>& board, int depth, bool is_max);
     public:
         explicit MinMaxPlayer(Player::PlayerSymbol symbol);
+
         int play(std::shared_ptr<Board> board) override;
 };

@@ -56,7 +56,7 @@ public class GameBoardActivity extends AppCompatActivity {
         }
     }
 
-    public void updateMoveAndTurn(){
+    private void updateMoveAndTurn(){
         tvMove.setText("Move: " + move);
         if(move % 2 == 0){
             tvPlayerTurn.setText("Turn: " + match.getPlayer2());
@@ -65,4 +65,5 @@ public class GameBoardActivity extends AppCompatActivity {
             tvPlayerTurn.setText("Turn: " + match.getPlayer1());
         }
     }
+
 }
