@@ -1,4 +1,4 @@
-package hr.atos.praksa.tictactoecpp;
+package hr.atos.praksa.tictactoecpp.retrofit;
 
 import java.util.ArrayList;
 

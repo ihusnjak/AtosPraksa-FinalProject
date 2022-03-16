@@ -1,4 +1,4 @@
-package hr.atos.praksa.tictactoecpp;
+package hr.atos.praksa.tictactoecpp.retrofit;
 
 import android.util.Log;
 

@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openMatchHistoryActivity() {
-        Intent intent = new Intent(this, PlayerInputActivity.class);
+        Intent intent = new Intent(this, MatchHistoryActivity.class);
         startActivity(intent);
     }
 }

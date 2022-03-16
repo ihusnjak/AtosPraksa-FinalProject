@@ -12,11 +12,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TicTacToeCpp"
         android:usesCleartextTraffic="true">
-        <activity android:name=".GameBoardActivity"></activity>
-        <activity android:name=".PlayerInputActivity" />
-        <activity android:name=".MatchDetailsActivity" />
-        <activity android:name=".MatchHistoryActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".GameBoardActivity" android:screenOrientation="portrait" ></activity>
+        <activity android:name=".PlayerInputActivity" android:screenOrientation="portrait"  />
+        <activity android:name=".MatchDetailsActivity" android:screenOrientation="portrait" />
+        <activity android:name=".MatchHistoryActivity" android:screenOrientation="portrait" />
+        <activity android:name=".MainActivity" android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

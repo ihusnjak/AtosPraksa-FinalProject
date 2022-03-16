@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PlayerInputActivity"
+    android:background="@color/main_background"
     android:padding="@dimen/padding_small"
-    android:background="@color/main_background">
+    tools:context=".PlayerInputActivity">
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -26,98 +26,102 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/separator_line_height"
-        app:layout_constraintTop_toTopOf="@id/guide_top"
-        android:background="@color/separator_line"/>
+        android:background="@color/separator_line"
+        app:layout_constraintTop_toTopOf="@id/guide_top" />
 
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/separator_line_height"
-        app:layout_constraintTop_toTopOf="@id/guide_bot"
-        android:background="@color/separator_line"/>
+        android:background="@color/separator_line"
+        app:layout_constraintTop_toTopOf="@id/guide_bot" />
 
     <TextView
         android:id="@+id/tv_labelInputNames"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/input_names"
+        android:textAllCaps="true"
+        android:textColor="@color/label"
+        android:textSize="@dimen/label_text_size"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/guide_top"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="@string/input_names"
-        android:textSize="@dimen/label_text_size"
-        android:textStyle="bold"
-        android:textAllCaps="true"
-        android:textColor="@color/label"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_labelInputPlayer1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/guide_top"
+        android:text="@string/player_1"
+        android:textAllCaps="true"
+        android:textColor="@color/label"
+        android:textSize="@dimen/label_text_size"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@id/et_inputPlayer1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="@string/player_1"
-        android:textSize="@dimen/label_text_size"
-        android:textStyle="bold"
-        android:textAllCaps="true"
-        android:textColor="@color/label"/>
+        app:layout_constraintTop_toTopOf="@id/guide_top" />
 
     <TextView
         android:id="@+id/tv_labelInputPlayer2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/et_inputPlayer1"
+        android:text="@string/player_2"
+        android:textAllCaps="true"
+        android:textColor="@color/label"
+        android:textSize="@dimen/label_text_size"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/et_inputPlayer2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="@string/player_2"
-        android:textSize="@dimen/label_text_size"
-        android:textStyle="bold"
-        android:textAllCaps="true"
-        android:textColor="@color/label"/>
+        app:layout_constraintTop_toBottomOf="@id/et_inputPlayer1" />
 
 
     <EditText
         android:id="@+id/et_inputPlayer1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_labelInputPlayer1"
+        android:background="@color/btn_background"
+        android:gravity="center_horizontal"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textAlignment="center"
+        android:textColor="@color/btn_foreground"
+        android:textSize="@dimen/label_text_size"
         app:layout_constraintBottom_toTopOf="@id/tv_labelInputPlayer2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:textSize="@dimen/label_text_size"
-        android:background="@color/btn_background"
-        android:textColor="@color/btn_foreground"
-        android:textAlignment="center"
-        android:gravity="center_horizontal" />
+        app:layout_constraintTop_toBottomOf="@id/tv_labelInputPlayer1" />
 
     <EditText
         android:id="@+id/et_inputPlayer2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_labelInputPlayer2"
+        android:background="@color/btn_background"
+        android:gravity="center_horizontal"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textAlignment="center"
+        android:textColor="@color/btn_foreground"
+        android:textSize="@dimen/label_text_size"
         app:layout_constraintBottom_toTopOf="@id/guide_bot"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:textSize="@dimen/label_text_size"
-        android:background="@color/btn_background"
-        android:textColor="@color/btn_foreground"
-        android:textAlignment="center"
-        android:gravity="center_horizontal" />
+        app:layout_constraintTop_toBottomOf="@id/tv_labelInputPlayer2" />
 
     <Button
         android:id="@+id/b_inputPlayerNames"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/guide_bot"
+        android:backgroundTint="@color/btn_background"
+        android:text="@string/submit"
+        android:textColor="@color/btn_foreground"
+        android:textSize="@dimen/label_text_size"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="@string/submit"
-        android:textSize="@dimen/label_text_size"
-        android:textStyle="bold"
-        android:backgroundTint="@color/btn_background"
-        android:textColor="@color/btn_foreground"/>
+        app:layout_constraintTop_toBottomOf="@id/guide_bot" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

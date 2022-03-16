@@ -13,6 +13,7 @@ import hr.atos.praksa.tictactoecpp.adapters.MatchesAdapter;
 import hr.atos.praksa.tictactoecpp.listeners.OnMatchClickListener;
 import hr.atos.praksa.tictactoecpp.listeners.UiListener;
 import hr.atos.praksa.tictactoecpp.model.Match;
+import hr.atos.praksa.tictactoecpp.retrofit.RetrofitInstance;
 
 public class MatchHistoryActivity extends AppCompatActivity implements OnMatchClickListener, UiListener {
 
