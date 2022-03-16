@@ -44,5 +44,5 @@ playeraction = IntVar()
 BOARD_ROWS = 3
 BOARD_COLS = 3
 options = {1: (0, 0), 2: (0, 1), 3: (0, 2),4: (1, 0), 5: (1, 1), 6: (1, 2), 7: (2, 0), 8: (2, 1), 9: (2, 2)}
+url = "http://188.166.133.147:8081/"
 
-#json constants

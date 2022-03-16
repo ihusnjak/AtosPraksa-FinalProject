@@ -19,5 +19,4 @@ class HumanPlayer(Player):
         for i in range(10):
             action = constants.options.get(constants.playeraction.get())
 
-      
         return action

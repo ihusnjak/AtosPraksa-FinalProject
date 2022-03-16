@@ -140,7 +140,7 @@ class GameLogic:
 
     def postMatch(self,game_dict):
             try:
-                r=requests.post("http://188.166.133.147:8081/", json=game_dict)
+                r=requests.post(constants.url, json=game_dict)
                 r.raise_for_status()
             except requests.exceptions.HTTPError as e:
                  print (e.response.text)
@@ -197,37 +197,37 @@ class GameLogic:
         if(gamemode == 0): 
             while not self.isEnd:
                 action = self.humanPlayerAction(1)
-                playerField = btn.changeButtonState(action)
-                self.movesList(playerField)
+                btn.changeButtonState(action)
+                self.movesList(constants.playeraction.get())
                 if(self.checkwin(self.p1.name)==0): break
 
                 action = self.humanPlayerAction(2)
-                playerField = btn.changeButtonState(action)
-                self.movesList(playerField)
+                btn.changeButtonState(action)
+                self.movesList(constants.playeraction.get())
                 if(self.checkwin(self.p2.name)==0): break
 
         elif(gamemode == 1):
             while not self.isEnd:
                 action = self.humanPlayerAction(1)
-                playerField = btn.changeButtonState(action)
-                self.movesList(playerField)
+                btn.changeButtonState(action)
+                self.movesList(constants.playeraction.get())
                 if(self.checkwin(self.p1.name)==0): break   
 
                 action = self.aiPlayerAction(2)
-                playerField = btn.changeButtonState(action)
-                self.movesList(playerField)
+                btn.changeButtonState(action)
+                self.movesList(constants.playeraction.get())
                 if(self.checkwin(self.p2.name)==0): break
 
         elif(gamemode == 2):
             while not self.isEnd:
                 action = self.aiPlayerAction(1)
-                playerField = btn.changeButtonState(action)
-                self.movesList(playerField)
+                btn.changeButtonState(action)
+                self.movesList(constants.playeraction.get())
                 if(self.checkwin(self.p1.name)==0): break
 
                 action = self.humanPlayerAction(2)
-                playerField = btn.changeButtonState(action)
-                self.movesList(playerField)
+                btn.changeButtonState(action)
+                self.movesList(constants.playeraction.get())
                 if(self.checkwin(self.p2.name)==0): break      
 
 
