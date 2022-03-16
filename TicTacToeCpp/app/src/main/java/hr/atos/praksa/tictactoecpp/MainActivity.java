@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button bHumanVsHuman, bHumanVsAi, bAiVsAi, bMatchHistory;
     static {
-        System.loadLibrary("Tic_Tac_Toe");
+        System.loadLibrary("TicTacToe");
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
