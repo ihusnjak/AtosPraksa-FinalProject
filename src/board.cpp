@@ -2,6 +2,7 @@
 #include "Tic_Tac_Toe/constants.h"
 #include <string>
 #include <vector>
+#include <algorithm>
 #include <iostream>
 
 void Board::empty_board(){
@@ -12,6 +13,34 @@ Board::Board(){
     for(int i = 0; i < Const::N_FIELDS; i++){
         board.push_back(Const::EMPTY_VALUE);
     }
+}
+
+Board::Board(std::string& board_s){
+    int n = 0;
+
+    if(board_s.size() != Const::N_FIELDS){
+        throw std::runtime_error("Invalid board size.");
+    }
+
+    for(int i = 0; i < Const::N_FIELDS; i++){
+        n = board_s.at(i) - '0';
+
+        if(n == Const::O_TABLE_VALUE){
+            n = Const::O_VALUE;
+        }
+
+        board.push_back(Const::EMPTY_VALUE);
+
+        if(n != 0 && !enter_input(i+1, n)){
+            throw std::runtime_error("Invalid board input.");
+        }
+    }
+}
+
+bool Board::is_empty() {
+    long long n = std::count(board.begin(), board.end(), Const::EMPTY_VALUE);
+
+    return n == Const::N_FIELDS;
 }
 
 std::string Board::to_string(){

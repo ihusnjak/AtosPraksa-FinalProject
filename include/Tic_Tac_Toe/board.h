@@ -10,6 +10,8 @@ class Board{
     public:
         Board();
 
+        explicit Board(std::string& board_s);
+
         std::string to_string();
 
         int to_table_value();
@@ -21,6 +23,8 @@ class Board{
         bool is_valid(int position);
 
         bool enter_input(int position, int input);
+
+        bool is_empty();
 
         friend std::ostream& operator<<(std::ostream& os, Board& board);
 };
