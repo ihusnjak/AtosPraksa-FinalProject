@@ -33,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        bHumanVsAi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openPlayerAiInputActivity();
+            }
+        });
+
         bMatchHistory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,6 +50,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void openPlayerInputActivity(){
         Intent intent = new Intent(this, PlayerInputActivity.class);
+        startActivity(intent);
+    }
+
+    private void openPlayerAiInputActivity(){
+        Intent intent = new Intent(this, PlayerAiInputActivity.class);
         startActivity(intent);
     }
 

@@ -8,4 +8,7 @@
     <string name="player_2">Player 2</string>
     <string name="player_1">Player 1</string>
     <string name="submit">Submit</string>
+    <string name="input_name">Input name</string>
+    <string name="play_as_player_1">Play as player 1</string>
+    <string name="play_as_player_2">Play as player 2</string>
 </resources>

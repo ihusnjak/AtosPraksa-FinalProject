@@ -44,6 +44,7 @@ public class PlayerInputActivity extends AppCompatActivity {
             Bundle bundle = new Bundle();
             bundle.putString("player1", etPlayer1.getText().toString());
             bundle.putString("player2", etPlayer2.getText().toString());
+            bundle.putInt("gameType", 1);
             intent.putExtras(bundle);
             startActivity(intent);
         }

@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".PlayerAiInputActivity"
     android:background="@color/main_background"
-    android:padding="@dimen/padding_small"
-    tools:context=".PlayerInputActivity">
-
+    android:padding="@dimen/padding_small">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guide_top"
@@ -36,10 +35,10 @@
         app:layout_constraintTop_toTopOf="@id/guide_bot" />
 
     <TextView
-        android:id="@+id/tv_labelInputNames"
+        android:id="@+id/tv_labelInputName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/input_names"
+        android:text="@string/input_name"
         android:textAllCaps="true"
         android:textColor="@color/label"
         android:textSize="@dimen/title_text_size"
@@ -50,68 +49,68 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_labelInputPlayer1"
+        android:id="@+id/tv_labelInputPlayerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/player_1"
+        android:text="Player name"
         android:textAllCaps="true"
         android:textColor="@color/label"
         android:textSize="@dimen/label_text_size"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/et_inputPlayer1"
+        app:layout_constraintBottom_toTopOf="@id/et_inputPlayerName"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/guide_top" />
 
-    <TextView
-        android:id="@+id/tv_labelInputPlayer2"
+
+    <EditText
+        android:id="@+id/et_inputPlayerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/btn_background"
+        android:gravity="center_horizontal"
+        android:inputType="text"
+        android:maxLines="1"
+        android:textAlignment="center"
+        android:textColor="@color/btn_foreground"
+        android:textSize="@dimen/label_text_size"
+        app:layout_constraintBottom_toTopOf="@id/rg_playerSelect"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_labelInputPlayerName" />
+
+    <RadioGroup
+        android:id="@+id/rg_playerSelect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/player_2"
-        android:textAllCaps="true"
-        android:textColor="@color/label"
-        android:textSize="@dimen/label_text_size"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@id/et_inputPlayer2"
+        app:layout_constraintTop_toBottomOf="@id/et_inputPlayerName"
+        app:layout_constraintBottom_toBottomOf="@id/guide_bot"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_inputPlayer1" />
+        app:layout_constraintRight_toRightOf="parent">
 
+        <RadioButton
+            android:id="@+id/rb_selectPlayer1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/play_as_player_1"
+            android:textColor="@color/label"
+            android:textSize="@dimen/radio_btn_text_size"
+            android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/et_inputPlayer1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/btn_background"
-        android:gravity="center_horizontal"
-        android:inputType="text"
-        android:maxLines="1"
-        android:textAlignment="center"
-        android:textColor="@color/btn_foreground"
-        android:textSize="@dimen/label_text_size"
-        app:layout_constraintBottom_toTopOf="@id/tv_labelInputPlayer2"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_labelInputPlayer1" />
+        <RadioButton
+            android:id="@+id/rb_selectPlayer2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/play_as_player_2"
+            android:textColor="@color/label"
+            android:textSize="@dimen/radio_btn_text_size"
+            android:textStyle="bold"/>
 
-    <EditText
-        android:id="@+id/et_inputPlayer2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/btn_background"
-        android:gravity="center_horizontal"
-        android:inputType="text"
-        android:maxLines="1"
-        android:textAlignment="center"
-        android:textColor="@color/btn_foreground"
-        android:textSize="@dimen/label_text_size"
-        app:layout_constraintBottom_toTopOf="@id/guide_bot"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_labelInputPlayer2" />
+    </RadioGroup>
+
 
     <Button
-        android:id="@+id/b_inputPlayerNames"
+        android:id="@+id/b_inputPlayerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/btn_background"

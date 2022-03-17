@@ -24,9 +24,32 @@ public class GameBoardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_board);
 
         Bundle bundle = getIntent().getExtras();
-        match = new Match(bundle.getString("player1"), bundle.getString("player2"), null);
+        int gameType = bundle.getInt("gameType");
+
+        createMatch(bundle, gameType);
+
+
+
 
         setupUiElements();
+    }
+
+    private void createMatch(Bundle bundle, int gameType){
+        if(gameType == 1){
+            match = new Match(bundle.getString("player1"), bundle.getString("player2"), null);
+        }
+        else if(gameType == 2){
+            int selectedPlayer = bundle.getInt("selectedPlayer");
+            if(selectedPlayer == 1){
+                match = new Match(bundle.getString("playerName"), "AI", null);    
+            }
+            else if(selectedPlayer == 2){
+                match = new Match("AI", bundle.getString("playerName"), null);
+            }
+        }
+        else {
+            match = new Match("AI_1", "AI_2", null);
+        }
     }
 
     private void setupUiElements(){
