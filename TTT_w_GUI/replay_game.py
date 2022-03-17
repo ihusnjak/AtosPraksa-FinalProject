@@ -16,7 +16,7 @@ class GameReplay():
         btn = GameScreen(constants.app)
         constants.app.update()
         for i in range(len(data["moves"])):           
-            action = constants.options.get(data["moves"][i]["playedField"]) 
+            action = constants.options.get(data["moves"][i]["affected_field"]) 
             btn.after(1000,btn.changeButtonState(action))
             constants.app.update()
 

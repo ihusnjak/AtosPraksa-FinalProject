@@ -48,6 +48,6 @@ options = {1: (0, 0), 2: (0, 1), 3: (0, 2),4: (1, 0), 5: (1, 1), 6: (1, 2), 7: (
 options_inv = {(0, 0): 1,(0, 1): 2,(0, 2): 3,(1, 0): 4,(1, 1): 5,(1, 2): 6,(2, 0): 7,(2, 1): 8,(2, 2): 9}
 p1_policies = {1: "policy_easy_p1",2: "policy_normal_p1", 3: "policy_hard_p1"}
 p2_policies = {1: "policy_easy_p2",2: "policy_normal_p2", 3: "policy_hard_p2"}
-url = "http://188.166.133.147:8081/"
-game_url = "http://188.166.133.147:8081/1"
+url = "http://188.166.133.147:8000/games"
+game_url = "http://188.166.133.147:8000/games/2"
 

@@ -137,7 +137,12 @@ class GameLogic:
             self.updateState(p2_action)
             return p2_action
 
+    """
+    Function used to send a POST request that contains a dictionary containing names of the players, winner and game flow info
 
+    Args: game_dict -> python dictionary containing player names, winner and info about move number with board position 
+
+    """
     def postMatch(self,game_dict):
             try:
                 r=requests.post(constants.url, json=game_dict)
@@ -166,17 +171,23 @@ class GameLogic:
             else:
                 PopupMessage(constants.app,"Tie")
                 global_variables.game_dict["winner"] = "None"
-                  
+
             self.postMatch(global_variables.game_dict)
+            
             self.reset()
             self.counter = 0
             return 0    
         
 
+    """
+    Function used to store moves made during the game for later user in sending a game to a server
+
+    Args: playerField -> number that represents a board position, value is between 1 and 9
+    """
     def movesList(self,playerField):
         self.counter += 1
         try:
-            global_variables.game_dict["moves"] += [{"moveNo": self.counter, "playedField": playerField}]
+            global_variables.game_dict["moves"] += [{"move_number": self.counter, "affected_field": playerField}]
         except KeyError:
             pass
         
