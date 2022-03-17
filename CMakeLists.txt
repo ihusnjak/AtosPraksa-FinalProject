@@ -1,9 +1,15 @@
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD 14)
 
-project(Tic_Tac_Toe)
+project("TicTacToe")
 
-add_executable(Tic_Tac_Toe src/main.cpp src/board.cpp src/human_player.cpp src/player.cpp src/Qtable.cpp src/game.cpp src/helper_functions.cpp src/random_player.cpp src/minmax_player.cpp src/q_player.cpp)
+if(ANDROID)
+	add_library(${PROJECT_NAME} SHARED ${CMAKE_SOURCE_DIR}/src/main.cpp ${CMAKE_SOURCE_DIR}/src/board.cpp ${CMAKE_SOURCE_DIR}/src/human_player.cpp ${CMAKE_SOURCE_DIR}/src/player.cpp ${CMAKE_SOURCE_DIR}/src/Qtable.cpp ${CMAKE_SOURCE_DIR}/src/game.cpp ${CMAKE_SOURCE_DIR}/src/helper_functions.cpp ${CMAKE_SOURCE_DIR}/src/random_player.cpp ${CMAKE_SOURCE_DIR}/src/minmax_player.cpp ${CMAKE_SOURCE_DIR}/src/q_player.cpp)
+	
+else()
+	add_executable(${PROJECT_NAME} ${CMAKE_SOURCE_DIR}/src/main.cpp ${CMAKE_SOURCE_DIR}/src/board.cpp ${CMAKE_SOURCE_DIR}/src/human_player.cpp ${CMAKE_SOURCE_DIR}/src/player.cpp ${CMAKE_SOURCE_DIR}/src/Qtable.cpp ${CMAKE_SOURCE_DIR}/src/game.cpp ${CMAKE_SOURCE_DIR}/src/helper_functions.cpp ${CMAKE_SOURCE_DIR}/src/random_player.cpp ${CMAKE_SOURCE_DIR}/src/minmax_player.cpp ${CMAKE_SOURCE_DIR}/src/q_player.cpp)
+endif()
 
-target_include_directories(Tic_Tac_Toe PUBLIC include/)
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_SOURCE_DIR}/include)
 

@@ -3,8 +3,8 @@
 #include <string>
 
 namespace Const{
-    const std::string POLICY_PATH_X = R"(C:\Users\dijana\CLionProjects\tic\policy_x.csv)";
-    const std::string POLICY_PATH_O = R"(C:\Users\dijana\CLionProjects\tic\policy_o.csv)";
+    const std::string POLICY_PATH_X = R"(../policy_x.csv)";
+    const std::string POLICY_PATH_O = R"(../policy_o.csv)";
     const float Q_WIN_REWARD = 1.0;
     const float Q_DRAW_REWARD = 0.5;
     const float Q_LOSE_REWARD = 0.0;
