@@ -31,7 +31,7 @@ class TictactoeScreen(Frame):
         self.btnHistory = Button(self.frame,
          text="History")
         self.btnReplay = Button(self.frame,
-         text="Replay",
+         text="Show example game",
           command=lambda:[self.destroy(), reset_state.set(4) ,self.startReplay()])
         self.btnBack = Button(self.frame,
          text="Back",
