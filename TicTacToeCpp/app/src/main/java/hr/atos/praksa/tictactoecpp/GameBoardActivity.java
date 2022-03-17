@@ -41,7 +41,7 @@ public class GameBoardActivity extends AppCompatActivity {
         else if(gameType == 2){
             int selectedPlayer = bundle.getInt("selectedPlayer");
             if(selectedPlayer == 1){
-                match = new Match(bundle.getString("playerName"), "AI", null);    
+                match = new Match(bundle.getString("playerName"), "AI", null);
             }
             else if(selectedPlayer == 2){
                 match = new Match("AI", bundle.getString("playerName"), null);
