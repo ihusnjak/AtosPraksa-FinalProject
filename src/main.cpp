@@ -46,10 +46,49 @@ int main(){
     try {
         //train(20000);
         //play(1);
-        std::string board_input = "110220110";
+        std::string board_input = "000000000";
+        //JUST CHANGE HUMAN_TURN AND START
+        //first input as O will be ignored but must be from 1 to 9
+        //you wont see the board on first move, it is empty btw so pick a number from 1 to 9
         int human_turn = 1;
-        int move = 9;
-        std:: cout << make_move(board_input, human_turn, move) << std::endl;
+
+        int move = 0;
+        int result = 0;
+        int machine_move = 0;
+        int winner = 0;
+        bool first = true;
+        while(true){
+            std::cin >> move;
+            result = make_move(board_input, human_turn, move);
+
+            //machine(Q learning bot) move can be easily gotten as:
+            machine_move = result%10;
+            //winner can be easily gotten as:
+            winner = result/10;
+
+            if(winner > 0){
+                if(winner == 1){
+                    std::cout << "Winner is: X" << std::endl;
+                }
+                if(winner == 2){
+                    std::cout << "Winner is: O" << std::endl;
+                }
+                if(winner == 3){
+                    std::cout << "Draw." << std::endl;
+                }
+                break;
+            }
+
+            if(machine_move > 0 && machine_move < 10){
+                if(human_turn == 2 && first){
+                    first = false;
+                }else {
+                    board_input[move - 1] = human_turn + '0';
+                }
+                board_input[machine_move-1] = human_turn == 2? '1' : '2';
+            }
+
+        }
 
     }catch(std::exception& e){
         std::cout << e.what() << std::endl;
