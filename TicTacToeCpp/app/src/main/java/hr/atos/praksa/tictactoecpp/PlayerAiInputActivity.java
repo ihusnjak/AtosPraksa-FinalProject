@@ -34,7 +34,7 @@ public class PlayerAiInputActivity extends AppCompatActivity {
         rgPlayerSelect = findViewById(R.id.rg_playerSelect);
         rbSelectPlayer1 = findViewById(R.id.rb_selectPlayer1);
         rbSelectPlayer2 = findViewById(R.id.rb_selectPlayer2);
-
+        rbSelectPlayer2.setEnabled(false);
         rgPlayerSelect.check(rbSelectPlayer1.getId());
 
         bSubmit.setOnClickListener(new View.OnClickListener() {

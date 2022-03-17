@@ -29,6 +29,10 @@ Game::Game(){
     this->helper_random_player = std::make_unique<RandomPlayer>(Player::PlayerSymbol::X);
 }
 
+Game::Game(std::string &board_s) {
+    this->board = std::make_unique<Board>(board_s);
+}
+
 void Game::reset_game() {
     if(this->board){
         this->board->empty_board();
@@ -48,6 +52,72 @@ Game::GameState Game::game_state(){
         throw std::runtime_error(board_null_error_msg);
     }
     return state;
+}
+
+int Game::make_move(int human_turn, int position) {
+    int result;
+    int machine_move = 0;
+    Game::GameState state;
+
+    Player::PlayerSymbol machine_symbol;
+    int first_move, second_move;
+
+    if(human_turn == Const::HUMAN_PLAYS_FIRST_SIGNAL){
+        machine_symbol = Player::PlayerSymbol::O;
+        first_move = Const::X_VALUE;
+        second_move = Const::O_VALUE;
+    }else{
+        machine_symbol = Player::PlayerSymbol::X;
+        first_move = Const::O_VALUE;
+        second_move = Const::X_VALUE;
+    }
+
+    std::unique_ptr<Player> Qplayer(new QPlayer(machine_symbol));
+
+    state = game_state();
+
+    if(!board->is_valid(position)){
+        result = Const::ERROR_SIGNAL;
+
+    }else if(state == GameState::Ongoing){
+
+        if(human_turn == Const::HUMAN_PLAYS_FIRST_SIGNAL || !board->is_empty()) {
+            board->enter_input(position, first_move);
+        }
+
+        state = game_state();
+
+        if(state == GameState::Ongoing){
+            machine_move = Qplayer->play(board);
+            board->enter_input(machine_move, second_move);
+        }
+    }
+
+    if(result != Const::ERROR_SIGNAL){
+        state = game_state();
+
+        switch (state) {
+            case GameState::XWon:
+                result = Const::X_WON_SIGNAL;
+                break;
+            case GameState::OWon:
+                result = Const::O_WON_SIGNAL;
+                break;
+            case GameState::Draw:
+                result = Const::DRAW_SIGNAL;
+                break;
+            default:
+                result = Const::ONGOING_SIGNAL;
+                break;
+        }
+
+        result = result * (Const::N_FIELDS+1) + machine_move;
+
+    }
+
+    std::cout << board->to_string() << std::endl;
+
+    return result;
 }
 
 Game::GameState Game::play(){

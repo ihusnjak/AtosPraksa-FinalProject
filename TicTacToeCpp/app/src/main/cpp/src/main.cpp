@@ -5,8 +5,10 @@
 #include "Tic_Tac_Toe/q_player.h"
 #include "Tic_Tac_Toe/player.h"
 #include "Tic_Tac_Toe/game.h"
+#include "Tic_Tac_Toe/board.h"
 #include <vector>
 #include <memory>
+#include <jni.h>
 
 void train(int n){
     std::unique_ptr<Game> game(new Game());
@@ -36,10 +38,34 @@ void play(int which_human){
     }
 }
 
+int make_move(std::string& board_input, int human_turn, int move){
+    std::unique_ptr<Game> game(new Game(board_input));
+    return game->make_move(human_turn, move);
+}
+
+extern "C" JNIEXPORT jint JNICALL
+Java_hr_atos_praksa_tictactoecpp_GameBoardActivity_makeMoveJNI(
+        JNIEnv* env,
+        jobject /* this */,
+        jstring board_input,
+        jint human_turn,
+        jint move) {
+    const char* convertedBoardInputChar = env->GetStringUTFChars(board_input, NULL);
+    std::string convertedBoardInputString = convertedBoardInputChar;
+    int newBoard = make_move(convertedBoardInputString, human_turn, move);
+    return newBoard;
+}
+
+
 int main(){
     try {
         //train(20000);
-        play(2);
+        //play(1);
+        std::string board_input = "110220110";
+        int human_turn = 1;
+        int move = 9;
+        std:: cout << make_move(board_input, human_turn, move) << std::endl;
+
     }catch(std::exception& e){
         std::cout << e.what() << std::endl;
     }

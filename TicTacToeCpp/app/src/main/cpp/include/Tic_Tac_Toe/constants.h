@@ -3,8 +3,15 @@
 #include <string>
 
 namespace Const{
-    const std::string POLICY_PATH_X = R"(C:\Users\dijana\CLionProjects\tic\policy_x.csv)";
-    const std::string POLICY_PATH_O = R"(C:\Users\dijana\CLionProjects\tic\policy_o.csv)";
+    const std::string POLICY_PATH_X = R"(../policy_x.csv)";
+    const std::string POLICY_PATH_O = R"(../policy_o.csv)";
+    const int X_WON_SIGNAL = 1;
+    const int O_WON_SIGNAL = 2;
+    const int ONGOING_SIGNAL = 0;
+    const int DRAW_SIGNAL = 3;
+    const int ERROR_SIGNAL = -1;
+    const int HUMAN_PLAYS_FIRST_SIGNAL = 1;
+    const int HUMAN_PLAYS_SECOND_SIGNAL = 2;
     const float Q_WIN_REWARD = 1.0;
     const float Q_DRAW_REWARD = 0.5;
     const float Q_LOSE_REWARD = 0.0;

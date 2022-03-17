@@ -3,6 +3,7 @@ package hr.atos.praksa.tictactoecpp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -18,6 +19,12 @@ public class GameBoardActivity extends AppCompatActivity {
     private int move = 1;
     private Match match;
 
+    static {
+        System.loadLibrary("TicTacToe");
+    }
+
+    public native int makeMoveJNI(String board_input, int human_turn, int move);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +35,9 @@ public class GameBoardActivity extends AppCompatActivity {
 
         createMatch(bundle, gameType);
 
-
-
-
         setupUiElements();
+
+        Log.d("BTN_JNI", "created activity");
     }
 
     private void createMatch(Bundle bundle, int gameType){
@@ -73,7 +79,7 @@ public class GameBoardActivity extends AppCompatActivity {
             btn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-
+                    makeMove();
                 }
             });
         }
@@ -87,6 +93,12 @@ public class GameBoardActivity extends AppCompatActivity {
         else {
             tvPlayerTurn.setText("Turn: " + match.getPlayer1());
         }
+    }
+
+    private void makeMove(){
+        Log.d("BTN_JNI", "called jni function on click");
+        int x = makeMoveJNI("000000000", 1, 3);
+        Log.d("BTN_JNI", "finished jni function with value: " + x);
     }
 
 }
