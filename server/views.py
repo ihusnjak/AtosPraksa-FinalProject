@@ -9,7 +9,10 @@ from .models import Game
 class Games(APIView):
 
 	def post(self, request):
-		gameSerializer = GameSerializer(data=request.data, many=True)
+		many=True
+		if isinstance(request.data, dict):
+			many=False
+		gameSerializer = GameSerializer(data=request.data, many=many)
 		if gameSerializer.is_valid():
 			gameSerializer.save()
 			return Response(gameSerializer.data, status=status.HTTP_201_CREATED)
