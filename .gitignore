@@ -3,3 +3,12 @@ TTT_w_GUI/__pycache__/*
 __pycache__/*
 TTT_w_GUI/TODO.txt
 test.py
+# PyCache
+/**/*/__pycache__/*
+# Virtual Environment
+**/env
+# Migrations
+/*/migrations/*
+!*/migrations/__init__.py
+# Database
+*.sqlite3
