@@ -1,0 +1,45 @@
+[
+    {
+        "player1": "Petar",
+        "player2": "Luka",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 0
+            },
+            {
+                "move_number": 2,
+                "affected_field": 5
+            },
+            {
+                "move_number": 3,
+                "affected_field": 5
+            },
+            {
+                "move_number": 4,
+                "affected_field": 7
+            },
+            {
+                "move_number": 5,
+                "affected_field": 7
+            },
+            {
+                "move_number": 6,
+                "affected_field": 6
+            },
+            {
+                "move_number": 7,
+                "affected_field": 6
+            },
+            {
+                "move_number": 8,
+                "affected_field": 2
+            },
+            {
+                "move_number": 9,
+                "affected_field": 2
+            }
+        ],
+        "winner": "Petar"
+    }
+]

@@ -1,0 +1,969 @@
+[
+    {
+        "player1": "Petar",
+        "player2": "Luka",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 0
+            },
+            {
+                "move_number": 2,
+                "affected_field": 5
+            },
+            {
+                "move_number": 3,
+                "affected_field": 5
+            },
+            {
+                "move_number": 4,
+                "affected_field": 7
+            },
+            {
+                "move_number": 5,
+                "affected_field": 7
+            },
+            {
+                "move_number": 6,
+                "affected_field": 6
+            },
+            {
+                "move_number": 7,
+                "affected_field": 6
+            },
+            {
+                "move_number": 8,
+                "affected_field": 2
+            },
+            {
+                "move_number": 9,
+                "affected_field": 2
+            }
+        ],
+        "winner": "Petar"
+    },
+    {
+        "player1": "Matej",
+        "player2": "Marko",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 2
+            },
+            {
+                "move_number": 2,
+                "affected_field": 7
+            },
+            {
+                "move_number": 3,
+                "affected_field": 7
+            },
+            {
+                "move_number": 4,
+                "affected_field": 8
+            },
+            {
+                "move_number": 5,
+                "affected_field": 8
+            },
+            {
+                "move_number": 6,
+                "affected_field": 4
+            },
+            {
+                "move_number": 7,
+                "affected_field": 4
+            }
+        ],
+        "winner": "Marko"
+    },
+    {
+        "player1": "Luka",
+        "player2": "Matej",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 4
+            },
+            {
+                "move_number": 2,
+                "affected_field": 6
+            },
+            {
+                "move_number": 3,
+                "affected_field": 6
+            },
+            {
+                "move_number": 4,
+                "affected_field": 8
+            },
+            {
+                "move_number": 5,
+                "affected_field": 8
+            },
+            {
+                "move_number": 6,
+                "affected_field": 1
+            },
+            {
+                "move_number": 7,
+                "affected_field": 1
+            }
+        ],
+        "winner": "Matej"
+    },
+    {
+        "player1": "Mateo",
+        "player2": "Marko",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 1
+            },
+            {
+                "move_number": 2,
+                "affected_field": 5
+            },
+            {
+                "move_number": 3,
+                "affected_field": 5
+            },
+            {
+                "move_number": 4,
+                "affected_field": 7
+            },
+            {
+                "move_number": 5,
+                "affected_field": 7
+            },
+            {
+                "move_number": 6,
+                "affected_field": 6
+            },
+            {
+                "move_number": 7,
+                "affected_field": 6
+            },
+            {
+                "move_number": 8,
+                "affected_field": 2
+            },
+            {
+                "move_number": 9,
+                "affected_field": 2
+            }
+        ],
+        "winner": "Marko"
+    },
+    {
+        "player1": "Filip",
+        "player2": "Matej",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 2
+            },
+            {
+                "move_number": 2,
+                "affected_field": 4
+            },
+            {
+                "move_number": 3,
+                "affected_field": 4
+            },
+            {
+                "move_number": 4,
+                "affected_field": 6
+            },
+            {
+                "move_number": 5,
+                "affected_field": 6
+            }
+        ],
+        "winner": "Matej"
+    },
+    {
+        "player1": "Petar",
+        "player2": "Filip",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 6
+            },
+            {
+                "move_number": 2,
+                "affected_field": 1
+            },
+            {
+                "move_number": 3,
+                "affected_field": 1
+            },
+            {
+                "move_number": 4,
+                "affected_field": 6
+            },
+            {
+                "move_number": 5,
+                "affected_field": 6
+            },
+            {
+                "move_number": 6,
+                "affected_field": 8
+            },
+            {
+                "move_number": 7,
+                "affected_field": 8
+            }
+        ],
+        "winner": "Filip"
+    },
+    {
+        "player1": "Marko",
+        "player2": "Luka",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 8
+            },
+            {
+                "move_number": 2,
+                "affected_field": 1
+            },
+            {
+                "move_number": 3,
+                "affected_field": 1
+            },
+            {
+                "move_number": 4,
+                "affected_field": 5
+            },
+            {
+                "move_number": 5,
+                "affected_field": 5
+            }
+        ],
+        "winner": "Luka"
+    },
+    {
+        "player1": "Matej",
+        "player2": "Jakov",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 5
+            },
+            {
+                "move_number": 2,
+                "affected_field": 7
+            },
+            {
+                "move_number": 3,
+                "affected_field": 7
+            },
+            {
+                "move_number": 4,
+                "affected_field": 3
+            },
+            {
+                "move_number": 5,
+                "affected_field": 3
+            },
+            {
+                "move_number": 6,
+                "affected_field": 4
+            },
+            {
+                "move_number": 7,
+                "affected_field": 4
+            }
+        ],
+        "winner": "Matej"
+    },
+    {
+        "player1": "David",
+        "player2": "Jakov",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 4
+            },
+            {
+                "move_number": 2,
+                "affected_field": 6
+            },
+            {
+                "move_number": 3,
+                "affected_field": 6
+            },
+            {
+                "move_number": 4,
+                "affected_field": 8
+            },
+            {
+                "move_number": 5,
+                "affected_field": 8
+            },
+            {
+                "move_number": 6,
+                "affected_field": 1
+            },
+            {
+                "move_number": 7,
+                "affected_field": 1
+            }
+        ],
+        "winner": "David"
+    },
+    {
+        "player1": "Filip",
+        "player2": "Ivan",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 1
+            },
+            {
+                "move_number": 2,
+                "affected_field": 5
+            },
+            {
+                "move_number": 3,
+                "affected_field": 5
+            },
+            {
+                "move_number": 4,
+                "affected_field": 7
+            },
+            {
+                "move_number": 5,
+                "affected_field": 7
+            },
+            {
+                "move_number": 6,
+                "affected_field": 6
+            },
+            {
+                "move_number": 7,
+                "affected_field": 6
+            },
+            {
+                "move_number": 8,
+                "affected_field": 2
+            },
+            {
+                "move_number": 9,
+                "affected_field": 2
+            }
+        ],
+        "winner": "Ivan"
+    },
+    {
+        "player1": "Jakov",
+        "player2": "Petar",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 2
+            },
+            {
+                "move_number": 2,
+                "affected_field": 8
+            },
+            {
+                "move_number": 3,
+                "affected_field": 8
+            },
+            {
+                "move_number": 4,
+                "affected_field": 1
+            },
+            {
+                "move_number": 5,
+                "affected_field": 1
+            },
+            {
+                "move_number": 6,
+                "affected_field": 6
+            },
+            {
+                "move_number": 7,
+                "affected_field": 6
+            }
+        ],
+        "winner": "Petar"
+    },
+    {
+        "player1": "Marko",
+        "player2": "Petar",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 6
+            },
+            {
+                "move_number": 2,
+                "affected_field": 5
+            },
+            {
+                "move_number": 3,
+                "affected_field": 5
+            },
+            {
+                "move_number": 4,
+                "affected_field": 7
+            },
+            {
+                "move_number": 5,
+                "affected_field": 7
+            },
+            {
+                "move_number": 6,
+                "affected_field": 6
+            },
+            {
+                "move_number": 7,
+                "affected_field": 6
+            },
+            {
+                "move_number": 8,
+                "affected_field": 2
+            },
+            {
+                "move_number": 9,
+                "affected_field": 2
+            }
+        ],
+        "winner": "Petar"
+    },
+    {
+        "player1": "Luka",
+        "player2": "Mateo",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 2
+            },
+            {
+                "move_number": 2,
+                "affected_field": 5
+            },
+            {
+                "move_number": 3,
+                "affected_field": 5
+            },
+            {
+                "move_number": 4,
+                "affected_field": 7
+            },
+            {
+                "move_number": 5,
+                "affected_field": 7
+            },
+            {
+                "move_number": 6,
+                "affected_field": 6
+            },
+            {
+                "move_number": 7,
+                "affected_field": 6
+            },
+            {
+                "move_number": 8,
+                "affected_field": 1
+            },
+            {
+                "move_number": 9,
+                "affected_field": 1
+            }
+        ],
+        "winner": "Luka"
+    },
+    {
+        "player1": "Franjo",
+        "player2": "Ivan",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 1
+            },
+            {
+                "move_number": 2,
+                "affected_field": 5
+            },
+            {
+                "move_number": 3,
+                "affected_field": 5
+            },
+            {
+                "move_number": 4,
+                "affected_field": 7
+            },
+            {
+                "move_number": 5,
+                "affected_field": 7
+            },
+            {
+                "move_number": 6,
+                "affected_field": 6
+            },
+            {
+                "move_number": 7,
+                "affected_field": 6
+            },
+            {
+                "move_number": 8,
+                "affected_field": 1
+            },
+            {
+                "move_number": 9,
+                "affected_field": 1
+            }
+        ],
+        "winner": "Ivan"
+    },
+    {
+        "player1": "Filip",
+        "player2": "Petar",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 1
+            },
+            {
+                "move_number": 2,
+                "affected_field": 5
+            },
+            {
+                "move_number": 3,
+                "affected_field": 5
+            },
+            {
+                "move_number": 4,
+                "affected_field": 7
+            },
+            {
+                "move_number": 5,
+                "affected_field": 7
+            },
+            {
+                "move_number": 6,
+                "affected_field": 6
+            },
+            {
+                "move_number": 7,
+                "affected_field": 6
+            },
+            {
+                "move_number": 8,
+                "affected_field": 2
+            },
+            {
+                "move_number": 9,
+                "affected_field": 2
+            }
+        ],
+        "winner": "Petar"
+    },
+    {
+        "player1": "Filip",
+        "player2": "Matej",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 2
+            },
+            {
+                "move_number": 2,
+                "affected_field": 5
+            },
+            {
+                "move_number": 3,
+                "affected_field": 5
+            },
+            {
+                "move_number": 4,
+                "affected_field": 7
+            },
+            {
+                "move_number": 5,
+                "affected_field": 7
+            },
+            {
+                "move_number": 6,
+                "affected_field": 6
+            },
+            {
+                "move_number": 7,
+                "affected_field": 6
+            },
+            {
+                "move_number": 8,
+                "affected_field": 1
+            },
+            {
+                "move_number": 9,
+                "affected_field": 1
+            }
+        ],
+        "winner": "Matej"
+    },
+    {
+        "player1": "Marko",
+        "player2": "Mateo",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 1
+            },
+            {
+                "move_number": 2,
+                "affected_field": 5
+            },
+            {
+                "move_number": 3,
+                "affected_field": 5
+            },
+            {
+                "move_number": 4,
+                "affected_field": 7
+            },
+            {
+                "move_number": 5,
+                "affected_field": 7
+            },
+            {
+                "move_number": 6,
+                "affected_field": 6
+            },
+            {
+                "move_number": 7,
+                "affected_field": 6
+            },
+            {
+                "move_number": 8,
+                "affected_field": 2
+            },
+            {
+                "move_number": 9,
+                "affected_field": 2
+            }
+        ],
+        "winner": "Marko"
+    },
+    {
+        "player1": "Luka",
+        "player2": "David",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 2
+            },
+            {
+                "move_number": 2,
+                "affected_field": 5
+            },
+            {
+                "move_number": 3,
+                "affected_field": 5
+            },
+            {
+                "move_number": 4,
+                "affected_field": 7
+            },
+            {
+                "move_number": 5,
+                "affected_field": 7
+            },
+            {
+                "move_number": 6,
+                "affected_field": 6
+            },
+            {
+                "move_number": 7,
+                "affected_field": 6
+            },
+            {
+                "move_number": 8,
+                "affected_field": 2
+            },
+            {
+                "move_number": 9,
+                "affected_field": 2
+            }
+        ],
+        "winner": "David"
+    },
+    {
+        "player1": "Mateo",
+        "player2": "Jakov",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 2
+            },
+            {
+                "move_number": 2,
+                "affected_field": 5
+            },
+            {
+                "move_number": 3,
+                "affected_field": 5
+            },
+            {
+                "move_number": 4,
+                "affected_field": 7
+            },
+            {
+                "move_number": 5,
+                "affected_field": 7
+            },
+            {
+                "move_number": 6,
+                "affected_field": 6
+            },
+            {
+                "move_number": 7,
+                "affected_field": 6
+            },
+            {
+                "move_number": 8,
+                "affected_field": 1
+            },
+            {
+                "move_number": 9,
+                "affected_field": 1
+            }
+        ],
+        "winner": "Jakov"
+    },
+    {
+        "player1": "Luka",
+        "player2": "Mateo",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 1
+            },
+            {
+                "move_number": 2,
+                "affected_field": 5
+            },
+            {
+                "move_number": 3,
+                "affected_field": 5
+            },
+            {
+                "move_number": 4,
+                "affected_field": 7
+            },
+            {
+                "move_number": 5,
+                "affected_field": 7
+            },
+            {
+                "move_number": 6,
+                "affected_field": 6
+            },
+            {
+                "move_number": 7,
+                "affected_field": 6
+            },
+            {
+                "move_number": 8,
+                "affected_field": 1
+            },
+            {
+                "move_number": 9,
+                "affected_field": 1
+            }
+        ],
+        "winner": "Mateo"
+    },
+    {
+        "player1": "Marko",
+        "player2": "Luka",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 9
+            },
+            {
+                "move_number": 2,
+                "affected_field": 9
+            },
+            {
+                "move_number": 3,
+                "affected_field": 7
+            },
+            {
+                "move_number": 4,
+                "affected_field": 7
+            },
+            {
+                "move_number": 5,
+                "affected_field": 2
+            },
+            {
+                "move_number": 6,
+                "affected_field": 2
+            },
+            {
+                "move_number": 7,
+                "affected_field": 4
+            },
+            {
+                "move_number": 8,
+                "affected_field": 4
+            },
+            {
+                "move_number": 9,
+                "affected_field": 3
+            }
+        ],
+        "winner": "Luka"
+    },
+    {
+        "player1": "Mateo",
+        "player2": "Matej",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 9
+            },
+            {
+                "move_number": 2,
+                "affected_field": 9
+            },
+            {
+                "move_number": 3,
+                "affected_field": 4
+            },
+            {
+                "move_number": 4,
+                "affected_field": 4
+            },
+            {
+                "move_number": 5,
+                "affected_field": 6
+            },
+            {
+                "move_number": 6,
+                "affected_field": 6
+            }
+        ],
+        "winner": "Mateo"
+    },
+    {
+        "player1": "Filip",
+        "player2": "Mateo",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 8
+            },
+            {
+                "move_number": 2,
+                "affected_field": 8
+            },
+            {
+                "move_number": 3,
+                "affected_field": 2
+            },
+            {
+                "move_number": 4,
+                "affected_field": 2
+            },
+            {
+                "move_number": 5,
+                "affected_field": 3
+            },
+            {
+                "move_number": 6,
+                "affected_field": 3
+            },
+            {
+                "move_number": 7,
+                "affected_field": 9
+            },
+            {
+                "move_number": 8,
+                "affected_field": 9
+            }
+        ],
+        "winner": "Mateo"
+    },
+    {
+        "player1": "Franjo",
+        "player2": "Ivan",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 7
+            },
+            {
+                "move_number": 2,
+                "affected_field": 7
+            },
+            {
+                "move_number": 3,
+                "affected_field": 3
+            },
+            {
+                "move_number": 4,
+                "affected_field": 3
+            },
+            {
+                "move_number": 5,
+                "affected_field": 2
+            },
+            {
+                "move_number": 6,
+                "affected_field": 2
+            },
+            {
+                "move_number": 7,
+                "affected_field": 9
+            },
+            {
+                "move_number": 8,
+                "affected_field": 9
+            },
+            {
+                "move_number": 9,
+                "affected_field": 4
+            }
+        ],
+        "winner": "Ivan"
+    },
+    {
+        "player1": "Marko",
+        "player2": "Ivan",
+        "moves": [
+            {
+                "move_number": 1,
+                "affected_field": 1
+            },
+            {
+                "move_number": 2,
+                "affected_field": 1
+            },
+            {
+                "move_number": 3,
+                "affected_field": 4
+            },
+            {
+                "move_number": 4,
+                "affected_field": 4
+            },
+            {
+                "move_number": 5,
+                "affected_field": 8
+            },
+            {
+                "move_number": 6,
+                "affected_field": 8
+            }
+        ],
+        "winner": "Ivan"
+    }
+]
