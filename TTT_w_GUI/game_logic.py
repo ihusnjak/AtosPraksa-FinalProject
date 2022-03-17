@@ -175,7 +175,11 @@ class GameLogic:
 
     def movesList(self,playerField):
         self.counter += 1
-        global_variables.game_dict["moves"] += [{"moveNo": self.counter, "playedField": playerField}]
+        try:
+            global_variables.game_dict["moves"] += [{"moveNo": self.counter, "playedField": playerField}]
+        except KeyError:
+            pass
+        
 
     """
     Used for separating/chosing gamemodes and assigning play orders
@@ -198,36 +202,37 @@ class GameLogic:
             while not self.isEnd:
                 action = self.humanPlayerAction(1)
                 btn.changeButtonState(action)
-                self.movesList(constants.playeraction.get())
+                self.movesList(constants.options_inv.get(action))
                 if(self.checkwin(self.p1.name)==0): break
 
                 action = self.humanPlayerAction(2)
                 btn.changeButtonState(action)
-                self.movesList(constants.playeraction.get())
+                self.movesList(constants.options_inv.get(action))
                 if(self.checkwin(self.p2.name)==0): break
 
         elif(gamemode == 1):
             while not self.isEnd:
                 action = self.humanPlayerAction(1)
                 btn.changeButtonState(action)
-                self.movesList(constants.playeraction.get())
+                self.movesList(constants.options_inv.get(action))
                 if(self.checkwin(self.p1.name)==0): break   
 
                 action = self.aiPlayerAction(2)
                 btn.changeButtonState(action)
-                self.movesList(constants.playeraction.get())
+                self.movesList(constants.options_inv.get(action))
                 if(self.checkwin(self.p2.name)==0): break
 
         elif(gamemode == 2):
             while not self.isEnd:
                 action = self.aiPlayerAction(1)
                 btn.changeButtonState(action)
-                self.movesList(constants.playeraction.get())
+                self.movesList(constants.options_inv.get(action))
                 if(self.checkwin(self.p1.name)==0): break
 
                 action = self.humanPlayerAction(2)
                 btn.changeButtonState(action)
-                self.movesList(constants.playeraction.get())
-                if(self.checkwin(self.p2.name)==0): break      
+                self.movesList(constants.options_inv.get(action))
+                if(self.checkwin(self.p2.name)==0): break
+              
 
 

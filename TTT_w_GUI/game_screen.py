@@ -1,3 +1,4 @@
+from operator import ge
 from constants import *
 import global_variables
 import tictactoescreen
@@ -92,5 +93,7 @@ class GameScreen(Frame):
             playvscomp_screen.PlayVsCompScreen.startPvAIGameFirst()
         elif(reset_state.get() == 3):
             playvscomp_screen.PlayVsCompScreen.startPvAIGameSecond()
+        elif(reset_state.get()== 4):
+            tictactoescreen.TictactoeScreen.startReplay()
 
 
