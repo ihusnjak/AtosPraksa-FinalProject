@@ -158,7 +158,7 @@ Now, the server is running. Locally, server is accessible on: `localhost:8000`
   - returns all games from specific user / player
   - returns one OR multiple JSON objects
 
-## *Responses*:
+### *Responses*:
   - 200 (OK)
   - 204 (No Content)
 ---
