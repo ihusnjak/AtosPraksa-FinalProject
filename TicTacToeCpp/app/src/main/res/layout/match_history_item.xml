@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginBottom="@dimen/margin_small"
     android:layout_marginLeft="@dimen/margin_extra_small"
     android:layout_marginRight="@dimen/margin_extra_small"
+    android:layout_marginBottom="@dimen/margin_small"
     android:background="@color/background_match_item"
     android:paddingLeft="@dimen/padding_small"
-    android:paddingRight="@dimen/padding_small"
     android:paddingTop="@dimen/padding_extra_small"
+    android:paddingRight="@dimen/padding_small"
     android:paddingBottom="@dimen/padding_extra_small">
 
     <androidx.constraintlayout.widget.Guideline
@@ -19,98 +19,135 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.35" />
 
-    <View
-        android:id="@+id/horizontal_separator_1"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/separator_line_height"
-        app:layout_constraintTop_toBottomOf="@id/tv_labelPlayer1"
-        app:layout_constraintBottom_toTopOf="@id/tv_labelPlayer2"
-        android:background="@color/separator_line"/>
+    <TextView
+        android:id="@+id/tv_label_Id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/padding_extra_small"
+        android:paddingBottom="@dimen/padding_extra_small"
+        android:text="Id:"
+        android:textColor="@color/label"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintRight_toRightOf="@id/guide_split"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/horizontal_separator_0"/>
+
+    <TextView
+        android:id="@+id/tv_Id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/padding_extra_small"
+        android:paddingBottom="@dimen/padding_extra_small"
+        android:text="test"
+        android:textColor="@color/label"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toRightOf="@id/guide_split"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/horizontal_separator_0"
+        app:layout_constraintRight_toRightOf="parent"/>
 
     <View
-        android:id="@+id/horizontal_separator_2"
+        android:id="@+id/horizontal_separator_0"
         android:layout_width="match_parent"
         android:layout_height="@dimen/separator_line_height"
-        app:layout_constraintTop_toBottomOf="@id/tv_labelPlayer2"
-        app:layout_constraintBottom_toTopOf="@id/tv_labelWinner"
-        android:background="@color/separator_line"/>
+        android:background="@color/separator_line"
+        app:layout_constraintBottom_toTopOf="@id/tv_labelPlayer1"
+        app:layout_constraintTop_toBottomOf="@id/tv_label_Id" />
 
     <TextView
         android:id="@+id/tv_labelPlayer1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="@id/guide_split"
+        android:paddingTop="@dimen/padding_extra_small"
+        android:paddingBottom="@dimen/padding_extra_small"
         android:text="Player 1:"
-        android:textSize="25sp"
         android:textColor="@color/label"
-        android:paddingBottom="@dimen/padding_extra_small"
-        android:paddingTop="@dimen/padding_extra_small"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/tv_labelPlayer2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tv_labelPlayer1"
+        android:textSize="25sp"
+        android:textStyle="bold"
         app:layout_constraintRight_toRightOf="@id/guide_split"
-        android:text="Player 2:"
-        android:textSize="25sp"
-        android:textColor="@color/label"
-        android:paddingBottom="@dimen/padding_extra_small"
-        android:paddingTop="@dimen/padding_extra_small"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:id="@+id/tv_labelWinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tv_labelPlayer2"
-        app:layout_constraintRight_toRightOf="@id/guide_split"
-        android:text="Winner:"
-        android:textSize="25sp"
-        android:textColor="@color/label"
-        android:paddingBottom="@dimen/padding_extra_small"
-        android:paddingTop="@dimen/padding_extra_small"
-        android:textStyle="bold"/>
+        app:layout_constraintTop_toTopOf="@id/horizontal_separator_0" />
 
     <TextView
         android:id="@+id/tv_player1Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
+        android:paddingTop="@dimen/padding_extra_small"
+        android:paddingBottom="@dimen/padding_extra_small"
+        android:text="test"
+        android:textColor="@color/label"
+        android:textSize="25sp"
         app:layout_constraintLeft_toRightOf="@id/guide_split"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="test"
-        android:textSize="25sp"
-        android:textColor="@color/label"
+        app:layout_constraintTop_toTopOf="@id/horizontal_separator_0" />
+
+    <View
+        android:id="@+id/horizontal_separator_1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/separator_line_height"
+        android:background="@color/separator_line"
+        app:layout_constraintBottom_toTopOf="@id/tv_labelPlayer2"
+        app:layout_constraintTop_toBottomOf="@id/tv_labelPlayer1" />
+
+    <TextView
+        android:id="@+id/tv_labelPlayer2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/padding_extra_small"
         android:paddingBottom="@dimen/padding_extra_small"
-        android:paddingTop="@dimen/padding_extra_small"/>
+        android:text="Player 2:"
+        android:textColor="@color/label"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintRight_toRightOf="@id/guide_split"
+        app:layout_constraintTop_toBottomOf="@+id/tv_labelPlayer1" />
 
     <TextView
         android:id="@+id/tv_player2Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tv_player1Name"
+        android:paddingTop="@dimen/padding_extra_small"
+        android:paddingBottom="@dimen/padding_extra_small"
+        android:text="test"
+        android:textColor="@color/label"
+        android:textSize="25sp"
         app:layout_constraintLeft_toRightOf="@id/guide_split"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="test"
-        android:textSize="25sp"
-        android:textColor="@color/label"
+        app:layout_constraintTop_toBottomOf="@+id/tv_player1Name" />
+
+    <View
+        android:id="@+id/horizontal_separator_2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/separator_line_height"
+        android:background="@color/separator_line"
+        app:layout_constraintBottom_toTopOf="@id/tv_labelWinner"
+        app:layout_constraintTop_toBottomOf="@id/tv_labelPlayer2" />
+
+
+    <TextView
+        android:id="@+id/tv_labelWinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/padding_extra_small"
         android:paddingBottom="@dimen/padding_extra_small"
-        android:paddingTop="@dimen/padding_extra_small"/>
+        android:text="Winner:"
+        android:textColor="@color/label"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintRight_toRightOf="@id/guide_split"
+        app:layout_constraintTop_toBottomOf="@+id/tv_labelPlayer2" />
 
     <TextView
         android:id="@+id/tv_Winner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/tv_player2Name"
+        android:paddingTop="@dimen/padding_extra_small"
+        android:paddingBottom="@dimen/padding_extra_small"
+        android:text="test"
+        android:textColor="@color/label"
+        android:textSize="25sp"
         app:layout_constraintLeft_toRightOf="@id/guide_split"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="test"
-        android:textSize="25sp"
-        android:textColor="@color/label"
-        android:paddingBottom="@dimen/padding_extra_small"
-        android:paddingTop="@dimen/padding_extra_small"/>
+        app:layout_constraintTop_toBottomOf="@+id/tv_player2Name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

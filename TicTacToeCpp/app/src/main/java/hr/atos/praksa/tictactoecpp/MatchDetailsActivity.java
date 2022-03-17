@@ -106,13 +106,13 @@ public class MatchDetailsActivity extends AppCompatActivity {
         clearBoard();
         int playedField = 1;
         for (int i = 0; i < moveNum; i++) {
-            playedField = movesList.get(i).getPlayedField();
+            playedField = movesList.get(i).getAffected_field();
             if ((i + 1) % 2 == 0)
-                bFieldsList.get(playedField - 1).setText("O");
+                bFieldsList.get(playedField).setText("O");
             else
-                bFieldsList.get(playedField - 1).setText("X");
+                bFieldsList.get(playedField).setText("X");
         }
-        bFieldsList.get(playedField - 1).setTextColor(Color.RED);
+        bFieldsList.get(playedField).setTextColor(Color.RED);
         if (moveNum >= match.getMovesList().size()) {
             tvWinner.setVisibility(View.VISIBLE);
         } else {

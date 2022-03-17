@@ -34,7 +34,7 @@ public class RetrofitInstance {
 
     public void getAllMatchesFromServer(){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://188.166.133.147:8081")
+                .baseUrl("http://188.166.133.147:8000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

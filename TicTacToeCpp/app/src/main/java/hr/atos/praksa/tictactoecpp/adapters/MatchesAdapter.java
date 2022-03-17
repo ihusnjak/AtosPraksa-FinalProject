@@ -43,6 +43,7 @@ public class MatchesAdapter extends RecyclerView.Adapter<MatchesViewHolder> {
         holder.tvPlayer1.setText(currentMatch.getPlayer1());
         holder.tvPlayer2.setText(currentMatch.getPlayer2());
         holder.tvWinner.setText(currentMatch.getWinner());
+        holder.tvId.setText(Integer.toString(currentMatch.getId()));
     }
 
     @Override

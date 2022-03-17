@@ -42,19 +42,19 @@ public class GameBoardActivity extends AppCompatActivity {
 
     private void createMatch(Bundle bundle, int gameType){
         if(gameType == 1){
-            match = new Match(bundle.getString("player1"), bundle.getString("player2"), null);
+            match = new Match(bundle.getString("player1"), bundle.getString("player2"), null, 0);
         }
         else if(gameType == 2){
             int selectedPlayer = bundle.getInt("selectedPlayer");
             if(selectedPlayer == 1){
-                match = new Match(bundle.getString("playerName"), "AI", null);
+                match = new Match(bundle.getString("playerName"), "AI", null, 0);
             }
             else if(selectedPlayer == 2){
-                match = new Match("AI", bundle.getString("playerName"), null);
+                match = new Match("AI", bundle.getString("playerName"), null, 0);
             }
         }
         else {
-            match = new Match("AI_1", "AI_2", null);
+            match = new Match("AI_1", "AI_2", null, 0);
         }
     }
 

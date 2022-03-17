@@ -8,6 +8,6 @@ import retrofit2.http.GET;
 
 public interface MatchesApi {
 
-    @GET(".")
+    @GET("/games")
     Call<ArrayList<Match>> getMatches();
 }

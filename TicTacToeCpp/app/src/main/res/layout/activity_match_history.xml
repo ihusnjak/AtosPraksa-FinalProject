@@ -7,10 +7,33 @@
     tools:context=".MatchHistoryActivity"
     android:background="@color/secondary_background">
 
+    <TextView
+        android:id="@+id/tv_match_history_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Match History"
+        android:textSize="@dimen/title_text_size"
+        android:textColor="@color/label_secondary"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/separator_line"/>
+
+    <View
+        android:id="@+id/separator_line"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/separator_line_height"
+        android:background="@color/separator_line_secondary"
+        app:layout_constraintTop_toBottomOf="@id/tv_match_history_title"
+        app:layout_constraintBottom_toTopOf="@id/rv_matchHistory"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_matchHistory"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/match_history_item"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/match_history_item"
+        app:layout_constraintTop_toBottomOf="@id/separator_line"
+        app:layout_constraintLeft_toLeftOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,12 +5,14 @@ import java.util.ArrayList;
 
 public class Match implements Serializable {
     private String player1, player2, winner;
+    private int id;
     private ArrayList<Move> moves;
 
-    public Match(String player1, String player2, String winner){
+    public Match(String player1, String player2, String winner, int id){
         this.player1 = player1;
         this.player2 = player2;
         this.winner = winner;
+        this.id = id;
         moves = new ArrayList<Move>();
     }
 
@@ -43,5 +45,13 @@ public class Match implements Serializable {
 
     public void addMove(Move move){
         this.moves.add(move);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
