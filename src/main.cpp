@@ -5,6 +5,7 @@
 #include "Tic_Tac_Toe/q_player.h"
 #include "Tic_Tac_Toe/player.h"
 #include "Tic_Tac_Toe/game.h"
+#include "Tic_Tac_Toe/board.h"
 #include <vector>
 #include <memory>
 
@@ -36,10 +37,20 @@ void play(int which_human){
     }
 }
 
+int make_move(std::string& board_input, int human_turn, int move){
+    std::unique_ptr<Game> game(new Game(board_input));
+    return game->make_move(human_turn, move);
+}
+
 int main(){
     try {
         //train(20000);
-        play(2);
+        //play(1);
+        std::string board_input = "110220110";
+        int human_turn = 1;
+        int move = 9;
+        std:: cout << make_move(board_input, human_turn, move) << std::endl;
+
     }catch(std::exception& e){
         std::cout << e.what() << std::endl;
     }

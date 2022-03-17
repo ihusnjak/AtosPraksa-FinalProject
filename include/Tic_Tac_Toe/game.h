@@ -25,13 +25,17 @@ class Game{
 
         Game();
 
-        Game(std::unique_ptr<Player>& player_one, std::unique_ptr<Player>& player_two);
+        explicit Game(std::unique_ptr<Player>& player_one, std::unique_ptr<Player>& player_two);
+
+        explicit Game(std::string& board_s);
 
         void reset_game();
 
         GameState game_state();
 
         GameState play();
+
+        int make_move(int human_turn, int position);
 
         friend bool operator==(const Game::GameState& gameState, const Player::PlayerSymbol& symbol);
 
