@@ -50,3 +50,34 @@ def GetGames(request, game_id=None, user=None):
 			return Response(content, status=status.HTTP_204_NO_CONTENT)
 		serializer = GameSerializer(games, many=True)
 		return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['DELETE'])
+def DeleteGames(request, game_id=None, user=None):
+	content = {}
+	if user:
+		try:
+			games = Game.objects.filter((Q(player1=user) | Q(player2=user))).get()
+			games.delete()
+			content['success'] = f'Games of user {user} were deleted.'
+			return Response(content, status=status.HTTP_200_OK)
+		except Game.DoesNotExist:
+			content['no_games'] = f'User {user} has no played games.'
+			return Response(content, status=status.HTTP_204_NO_CONTENT)
+	elif game_id:
+		try:
+			game = Game.objects.filter(id=game_id).get()
+			game.delete()
+			content['success'] = f'Game with id {game_id} deleted.'
+			return Response(content, status=status.HTTP_200_OK)
+		except Game.DoesNotExist:
+			content['no_games'] = f'Game with id {game_id} does not exist.'
+			return Response(content, status=status.HTTP_204_NO_CONTENT)
+	else:
+		games = Game.objects.all()
+		if games.count() <= 0:
+			content['no_games'] = f'No games in the database.'
+			return Response(content, status=status.HTTP_204_NO_CONTENT)
+		games.delete()
+		content['success'] = f'All games were deleted.'
+		return Response(content, status=status.HTTP_200_OK)
