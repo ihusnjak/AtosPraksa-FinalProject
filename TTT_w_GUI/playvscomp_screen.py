@@ -44,7 +44,7 @@ class PlayVsCompScreen(Frame):
     def startPvAIGameFirst():     
         p1 = HumanPlayer("Player")
         p2 = AiPlayer("Computer")
-        p2.loadPolicy("policy_p2")
+        p2.loadPolicy(p2_policies.get(difficulty.get()))
         st = game_logic.GameLogic(p1, p2)
         st.play(1)
     
@@ -52,6 +52,6 @@ class PlayVsCompScreen(Frame):
     def startPvAIGameSecond():     
         p2 = HumanPlayer("Player")
         p1 = AiPlayer("Computer")
-        p1.loadPolicy("policy_p1")
+        p1.loadPolicy(p1_policies.get(difficulty.get()))
         st = game_logic.GameLogic(p1, p2)
         st.play(2)

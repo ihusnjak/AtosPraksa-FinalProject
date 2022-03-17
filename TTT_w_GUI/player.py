@@ -1,4 +1,4 @@
-from constants import *
+import constants
 import pickle
 
 """
@@ -13,17 +13,9 @@ class Player:
 
     #Get unique hash for current board
     def getHash(self, board):
-        boardHash = str(board.reshape(BOARD_COLS * BOARD_ROWS))
+        boardHash = str(board.reshape(constants.BOARD_COLS * constants.BOARD_ROWS))
         return boardHash
 
-    """
-    Saves q learning policy, required during learning
-    
-    """
-    def savePolicy(self):
-        fw = open('policy_' + str(self.name), 'wb')
-        pickle.dump(self.states_value, fw)
-        fw.close()
 
     """
     Loads q learning policy, required for playing vs AIPlayer
