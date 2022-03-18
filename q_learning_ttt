@@ -99,7 +99,6 @@ class Game_Logic:
     """
     def giveReward(self):
         result = self.winner()
-        # Backpropagate reward
         if result == 1:
             self.p1.feedReward(1)
             self.p2.feedReward(0)

@@ -4,8 +4,7 @@ import difficultyscreen
 from human_player import HumanPlayer
 import game_logic
 from replay_game import GameReplay
-from game_screen import GameScreen
-import constants
+
 
 """
 Screen that appears after clicking Tic Tac Toe on the main menu, buttons activate functions that start various gamemodes and turn on the game screen.
@@ -28,8 +27,6 @@ class TictactoeScreen(Frame):
          text="Play vs BOT",
           #command=lambda: [self.destroy(), reset_state.set(2),self.startPvAIGame()])
           command=lambda: [self.destroy(), difficultyscreen.DifficultyScreen(app)])
-        self.btnHistory = Button(self.frame,
-         text="History")
         self.btnReplay = Button(self.frame,
          text="Show example game",
           command=lambda:[self.destroy(), reset_state.set(4) ,self.startReplay()])
@@ -38,15 +35,14 @@ class TictactoeScreen(Frame):
           command=lambda:[self.destroy(), mainmenuscreen.MainMenuScreen(app)])
         
         #style buttons
-        for btn in (self.btnPvP, self.btnPvAI, self.btnHistory, self.btnReplay, self.btnBack):
+        for btn in (self.btnPvP, self.btnPvAI, self.btnReplay, self.btnBack):
             setBtnStyle(btn)
 
         #place buttons
-        self.btnPvP.place(x=initialXY, y=initialY4, width=btnWidth, height=btnHeight-20)
-        self.btnPvAI.place(x=initialXY, y=initialY4 + incrementY4-20, width=btnWidth, height=btnHeight-20)
-        self.btnHistory.place(x=initialXY, y=initialY4 + 2*incrementY4-40, width=btnWidth, height=btnHeight-20)
-        self.btnReplay.place(x=initialXY, y=initialY4 + 3*incrementY4-60, width=btnWidth, height=btnHeight-20)
-        self.btnBack.place(x=initialXY, y=initialY4 + 4*incrementY4-80, width=btnWidth, height=btnHeight-20)
+        self.btnPvP.place(x=initialXY, y=initialY4, width=btnWidth, height=btnHeight)
+        self.btnPvAI.place(x=initialXY, y=initialY4 + incrementY4, width=btnWidth, height=btnHeight)
+        self.btnReplay.place(x=initialXY, y=initialY4 + 2*incrementY4, width=btnWidth, height=btnHeight)
+        self.btnBack.place(x=initialXY, y=initialY4 + 3*incrementY4, width=btnWidth, height=btnHeight)
 
 
 
