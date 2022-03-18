@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212"
+    tools:context=".GameBoardActivity">
+
+    <TextView
+        android:id="@+id/tv_gameBoard_move"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Move: 1"
+        android:textAllCaps="true"
+        android:textColor="@color/label"
+        android:textSize="@dimen/label_text_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/guide_top_edge"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_top_edge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_bot_edge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.7" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_game_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_extra_small"
+        android:layout_marginRight="@dimen/margin_extra_small"
+        android:background="@color/background_board"
+        app:layout_constraintBottom_toBottomOf="@id/guide_bot_edge"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@id/guide_top_edge">
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_left_edge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_right_edge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_left_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.35" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_right_center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.65" />
+
+        <Button
+            android:id="@+id/b_gameBoard_field1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_board_field"
+            android:foregroundTint="@color/foreground_board_field"
+            android:includeFontPadding="false"
+            android:textColor="@color/foreground_board_field"
+            android:textSize="@dimen/match_history_field_text_size"
+            app:layout_constraintLeft_toLeftOf="@id/guide_left_edge"
+            app:layout_constraintRight_toRightOf="@id/guide_left_center"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_gameBoard_field2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_board_field"
+            android:foregroundTint="@color/foreground_board_field"
+            android:includeFontPadding="false"
+            android:textColor="@color/foreground_board_field"
+            android:textSize="@dimen/match_history_field_text_size"
+            app:layout_constraintLeft_toLeftOf="@+id/guide_left_center"
+            app:layout_constraintRight_toRightOf="@id/guide_right_center"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_gameBoard_field3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_board_field"
+            android:foregroundTint="@color/foreground_board_field"
+            android:includeFontPadding="false"
+            android:textColor="@color/foreground_board_field"
+            android:textSize="@dimen/match_history_field_text_size"
+            app:layout_constraintLeft_toLeftOf="@+id/guide_right_center"
+            app:layout_constraintRight_toRightOf="@id/guide_right_edge"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/b_gameBoard_field4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_board_field"
+            android:foregroundTint="@color/foreground_board_field"
+            android:includeFontPadding="false"
+            android:textColor="@color/foreground_board_field"
+            android:textSize="@dimen/match_history_field_text_size"
+            app:layout_constraintLeft_toLeftOf="@id/guide_left_edge"
+            app:layout_constraintRight_toRightOf="@id/guide_left_center"
+            app:layout_constraintTop_toBottomOf="@id/b_gameBoard_field1" />
+
+        <Button
+            android:id="@+id/b_gameBoard_field5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_board_field"
+            android:foregroundTint="@color/foreground_board_field"
+            android:includeFontPadding="false"
+            android:textColor="@color/foreground_board_field"
+            android:textSize="@dimen/match_history_field_text_size"
+            app:layout_constraintLeft_toLeftOf="@+id/guide_left_center"
+            app:layout_constraintRight_toRightOf="@id/guide_right_center"
+            app:layout_constraintTop_toBottomOf="@id/b_gameBoard_field2" />
+
+        <Button
+            android:id="@+id/b_gameBoard_field6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_board_field"
+            android:foregroundTint="@color/foreground_board_field"
+            android:includeFontPadding="false"
+            android:textColor="@color/foreground_board_field"
+            android:textSize="@dimen/match_history_field_text_size"
+            app:layout_constraintLeft_toLeftOf="@+id/guide_right_center"
+            app:layout_constraintRight_toRightOf="@id/guide_right_edge"
+            app:layout_constraintTop_toBottomOf="@id/b_gameBoard_field3" />
+
+        <Button
+            android:id="@+id/b_gameBoard_field7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_board_field"
+            android:foregroundTint="@color/foreground_board_field"
+            android:includeFontPadding="false"
+            android:textColor="@color/foreground_board_field"
+            android:textSize="@dimen/match_history_field_text_size"
+            app:layout_constraintLeft_toLeftOf="@id/guide_left_edge"
+            app:layout_constraintRight_toRightOf="@id/guide_left_center"
+            app:layout_constraintTop_toBottomOf="@id/b_gameBoard_field4" />
+
+        <Button
+            android:id="@+id/b_gameBoard_field8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_board_field"
+            android:foregroundTint="@color/foreground_board_field"
+            android:includeFontPadding="false"
+            android:textColor="@color/foreground_board_field"
+            android:textSize="@dimen/match_history_field_text_size"
+            app:layout_constraintLeft_toLeftOf="@+id/guide_left_center"
+            app:layout_constraintRight_toRightOf="@id/guide_right_center"
+            app:layout_constraintTop_toBottomOf="@id/b_gameBoard_field5" />
+
+        <Button
+            android:id="@+id/b_gameBoard_field9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/background_board_field"
+            android:foregroundTint="@color/foreground_board_field"
+            android:includeFontPadding="false"
+            android:textColor="@color/foreground_board_field"
+            android:textSize="@dimen/match_history_field_text_size"
+            app:layout_constraintLeft_toLeftOf="@+id/guide_right_center"
+            app:layout_constraintRight_toRightOf="@id/guide_right_edge"
+            app:layout_constraintTop_toBottomOf="@id/b_gameBoard_field6" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_match_gameBoard_turn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Turn: Player1"
+        android:textAllCaps="true"
+        android:textColor="@color/label"
+        android:textSize="@dimen/label_text_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cl_game_field"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
