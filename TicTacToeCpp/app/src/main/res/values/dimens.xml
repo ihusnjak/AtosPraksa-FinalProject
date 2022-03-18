@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="width_menu_button">300dp</dimen>
+    <dimen name="height_menu_button">100dp</dimen>
+    <dimen name="margin_small">20dp</dimen>
+    <dimen name="match_history_field_text_size">70sp</dimen>
+    <dimen name="margin_extra_small">10dp</dimen>
+    <dimen name="label_text_size">40sp</dimen>
+    <dimen name="match_history_nav_btn_height">100dp</dimen>
+    <dimen name="padding_small">20dp</dimen>
+    <dimen name="padding_extra_small">10dp</dimen>
+    <dimen name="separator_line_height">5dp</dimen>
+    <dimen name="title_text_size">50sp</dimen>
+    <dimen name="radio_btn_text_size">30sp</dimen>
+</resources>
