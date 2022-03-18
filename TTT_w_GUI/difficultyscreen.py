@@ -9,13 +9,16 @@ class DifficultyScreen(Frame):
         self.frame = Frame(container, background=backgroundColor, width=windowWidth, height=windowHeight).place(x=0, y=0)
 
         #define buttons
+        difficulty.set(0)
         self.btnEasy = Button(self.frame,
-         text="Easy")
+         text="Easy",
+         command=lambda: [self.destroy(),difficulty.set(1),playvscomp_screen.PlayVsCompScreen(app)])
         self.btnMedium = Button(self.frame,
-         text="Medium")
+         text="Medium",
+         command=lambda: [self.destroy(),difficulty.set(2),playvscomp_screen.PlayVsCompScreen(app)])
         self.btnHard = Button(self.frame,
          text="Hard",
-          command=lambda: [self.destroy(),playvscomp_screen.PlayVsCompScreen(app)])
+          command=lambda: [self.destroy(),difficulty.set(3),playvscomp_screen.PlayVsCompScreen(app)])
         self.btnBack = Button(self.frame,
          text="Back",
           command=lambda:[self.destroy(), tictactoescreen.TictactoeScreen(app)])
